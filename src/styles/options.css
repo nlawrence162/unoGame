@@ -1,0 +1,113 @@
+.obutton {
+    height: 45px;
+    transition: all 0.2s;
+    background-color: #fcfcfc !important;
+  }
+
+  .ob1{
+    border-top: 1px solid #f1f1f1 !important;
+    border-bottom: 1px solid #f1f1f1 !important;
+  }
+  .ob2{
+    border: 1px solid #f1f1f1 !important;
+  }
+
+  .opbutton {
+    height: 45px;
+    transition: all 0.2s;
+    border-top: 1px solid #d5d3eb !important;
+    border-bottom: 1px solid #cdcaf0 !important;
+    background-color: #b6c4d4 !important;
+  }
+
+.cog i, .cogspin i{
+    transform: translate(-1px,1px);
+    transition: all 0.2s;
+}
+
+.cog:hover i{
+    transform: translate(-1px,1px) rotate(-45deg);
+}
+
+/*Button size*/
+.cog, .cogspin {
+    width: 50px;
+    height: 45px;
+}
+
+.cogspin i{
+    animation: spin .8s linear 0s infinite;
+}
+.cog{
+    background-color: #fff !important;
+    border-top: 1px solid #fff !important;
+    border-bottom: 1px solid #fff !important;
+    border-left: 1px solid #fff !important;
+}
+.cogspin{
+    background-color: #fcfcfc  !important;
+    border-top: 1px solid #f1f1f1 !important;
+    border-bottom: 1px solid #f1f1f1 !important;
+    border-left: 1px solid #f1f1f1 !important;
+}
+
+@keyframes spin{
+    from {transform: translate(-1px,1px) rotate(0deg);}
+    to {transform: translate(-1px,1px) rotate(-45deg);}
+}
+
+.whitebox {
+    display: inline-block;
+    transition: transform .5s;
+    transform-origin: left;
+    position: absolute;
+    left: 49px;
+    height: 45px;
+    width: 321px;
+    background-color: #ffffff;
+  }
+
+.squish {
+    transform: scaleX(0);
+    transform-origin: right;
+}  
+
+.wiggle:hover div{
+    animation-name: wiggle;
+    animation-duration: .8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.89,.38,.16,.74);
+}
+
+.wiggle:hover div div{
+    animation-name: float;
+    animation-duration: 3.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.82,.4,.16,.57);
+}
+
+.wiggle:hover div div div{
+    animation-name: hover;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.82,.4,.16,.57);
+}
+
+@keyframes wiggle{
+    0% {transform: rotate(10deg)}
+    50% {transform: rotate(-10deg)}
+    100% {transform: rotate(10deg)}
+}
+
+@keyframes float{
+    0% {transform: translateY(2px)}
+    50% {transform: translateY(-2px)}
+    100% {transform: translateY(2px)}
+}
+
+@keyframes hover{
+    0% {transform: translateX(1px)}
+    50% {transform: translateX(-1px)}
+    100% {transform: translateX(1px)}
+}
+
