@@ -295,7 +295,7 @@ class Game extends React.Component {
               Wikipedia dosn't know what they're talking about.
               This is how this is gonna go:<br /><br />
               - If you can't play a card, too bad. You will keep drawing untill you can.
-              Even if that literally means all 108 cards.<br /><br />
+              Even if that means all 108 cards.<br /><br />
               - Winning dosn't end the game. It goes on untill you stop playing.<br /><br />
               - You can add players and computers at will. Even during the game.<br /><br />
               - When a player reaches zero cards, they get thanos snapped.
@@ -316,21 +316,23 @@ class Game extends React.Component {
           aria-labelledby="rules3"
           aria-describedby="rulz3"
         >
-          <DialogTitle id="rules3">Wow you ask too many questions:</DialogTitle>
+          <DialogTitle id="rules3">Instructions:</DialogTitle>
           <DialogContent>
             <DialogContentText id="rulz3">
-              - By default, there is one player. You choose whitch cards they play.
-              You add enemies and other players at will. But you can't remove them.<br /><br />
-              - Each player is shown on the screen, this can be disabled
-              A computer player is represented by a red border on their turn.
-              A player is represented by a blue border on their turn.<br /><br />
+              <p style={{ fontStyle: "italic" }}>The best way to learn the game is by clicking around and observing
+              the results, but if you would like a cheat sheet, here it is:</p>
+              - By default, there is one player. You choose which cards they play.
+              You add oponents and other players at will. But you cannot remove them.<br /><br />
+              - Every player is shown on the screen, this can be disabled.
+              A computer player is represented by a <p style={{ display: "inline", color: "coral" }}>red</p> border on their turn.
+              A player is represented by a <p style={{ display: "inline", color: "MediumTurquoise " }}>blue</p> border on their turn.<br /><br />
               - You can choose how the turns work, but the rules stay the same.
-              The game won't let you make an illegal play.
-              (You will probably still try anyway.)
+              The game won't let you make an illegal play.<br /><br />
+              <p style={{ fontWeight: "bold" }}>Note: For extra options, open the <i className="glyphicon glyphicon-cog" /> menu.</p>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => this.closeRulesDialog(3)} color="primary">k let me play plz</Button>
+            <Button onClick={() => this.closeRulesDialog(3)} color="primary">Alright, let me play.</Button>
           </DialogActions>
         </Dialog>
       </div >
@@ -462,7 +464,7 @@ class Game extends React.Component {
   renderOptions() {
     return (
       <div style={{ display: 'inline-block', transform: "translateX(-1px) translateY(-1px)", width: "450px" }}>
-        <button id="cogButton" className="w3-button cog" onClick={this.toggleOptionsMenu}><i className="glyphicon glyphicon-cog w3-large"></i></button>
+        <button id="cogButton" className="w3-button cog" onClick={this.toggleOptionsMenu}><i className="glyphicon glyphicon-cog w3-large" /></button>
         <div id="whiteBox" className="whitebox"></div>
         <button className={this.autoPlayAI ? "w3-button opbutton ob1" : "w3-button obutton ob1"} onClick={() => this.toggleOption(1)}>Autoplay</button>
         <button className={this.hideComputers ? "w3-button opbutton ob1" : "w3-button obutton ob1"} onClick={() => this.toggleOption(3)}>Hide AI</button>

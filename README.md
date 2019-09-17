@@ -2,7 +2,7 @@
 
 **This game dose**  ***not***  **follow official uno rules.**
 
-You can play it [here](https://github.chrobinson.com/pages/lawrnat/internuno/).
+You can play it [here](https://github.chrobinson.com/pages/lawrnat/internuno/). (Recomended platform: PC)
 
 ## Credits
 
