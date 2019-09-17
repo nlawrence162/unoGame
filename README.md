@@ -1,18 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Uno!
 
-**This game dose** ***not*** **follow official uno rules.**
+**This game dose**  ***not***  **follow official uno rules.**
 
-This game is hosted [here](https://github.chrobinson.com/pages/lawrnat/internuno/).
+You can play it [here](https://github.chrobinson.com/pages/lawrnat/internuno/).
 
-### Credits
+## Credits
 
-###### Assets:
+#### Assets:
+
 This game uses assets from: https://opengameart.org/content/uno-playing-cards-2d
 
-###### Logic:
-This game utilizes the fisher-yates shuffle to shuffle the cards: https://bost.ocks.org/mike/shuffle/
+#### Logic:
 
-###### Styles:
+This game utilizes the *fisher-yates* shuffle to shuffle the cards: https://bost.ocks.org/mike/shuffle/
+
+#### Styles:
+
 Imported styles include [W3](https://www.w3schools.com/w3css/w3css_downloads.asp) buttons and [Bootstrap](https://getbootstrap.com/docs/3.4/css/) icons.
