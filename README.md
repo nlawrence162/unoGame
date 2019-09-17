@@ -2,7 +2,7 @@
 
 **This game dose**  ***not***  **follow official uno rules.**
 
-You can play it [here](https://github.chrobinson.com/pages/lawrnat/internuno/). (Recomended platform: PC)
+You can play it [here](https://github.chrobinson.com/pages/lawrnat/internuno/). (Recommended platform: PC)
 
 ## Credits
 
@@ -12,7 +12,7 @@ This game uses assets from: https://opengameart.org/content/uno-playing-cards-2d
 
 #### Logic:
 
-This game utilizes the *fisher-yates* shuffle to shuffle the cards: https://bost.ocks.org/mike/shuffle/
+This project utilizes the *fisher-yates* shuffle: https://bost.ocks.org/mike/shuffle/
 
 #### Styles:
 
