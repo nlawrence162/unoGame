@@ -10,6 +10,7 @@
   }
   .ob2{
     border: 1px solid #f1f1f1 !important;
+    transform: translateX(-1px);
   }
 
   .opbutton {
@@ -65,6 +66,7 @@
     height: 45px;
     width: 321px;
     background-color: #ffffff;
+    z-index: 1;
   }
 
 .squish {

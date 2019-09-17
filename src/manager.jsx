@@ -292,16 +292,15 @@ class Game extends React.Component {
           <DialogTitle id="rules2">Okay, here it is:</DialogTitle>
           <DialogContent>
             <DialogContentText id="rulz2">
-              Wikipedia dosn't know what they're talking about.
-              This is how this is gonna go:<br /><br />
+              <p style={{ fontStyle: "italic" }}>Wikipedia dosn't know what they're talking about:</p>
               - If you can't play a card, too bad. You will keep drawing untill you can.
               Even if that means all 108 cards.<br /><br />
-              - Winning dosn't end the game. It goes on untill you stop playing.<br /><br />
+              - Winning doesn't end the game. It goes on until you stop playing.<br /><br />
               - You can add players and computers at will. Even during the game.<br /><br />
               - When a player reaches zero cards, they get thanos snapped.
               A message will appear declaring their victory.<br /><br />
               - The play pile makes a cool snake. Deal with it.<br /><br />
-              - Other than that. Normal uno rules.
+              - Other than that. <a href="https://www.unorules.com/">Normal uno rules.</a>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -437,16 +436,14 @@ class Game extends React.Component {
         <DialogTitle id="help">What these options tho?</DialogTitle>
         <DialogContent>
           <DialogContentText id="halp">
-            Autoplay: When the "advance one turn" button is clicked, it will
-            skip every AI turn(red border) and stop at the next player(blue border).
+            <p style={{ display: "inline", fontStyle: "italic", fontWeight: "bold" }}>Autoplay</p>: When the "advance one turn" button is clicked, it will
+            automatically play every <p style={{ display: "inline", color: "coral" }}>AI turn</p> and stop at the next <p style={{ display: "inline", color: "MediumTurquoise " }}>player</p>.
             Reverse, Skip, and Draw cards are still calculated during these turns.<br /><br />
-            Hide AI: By default, the oposition's cards are readily available to see.
-            Unless you're a dirty cheater, you may feel inclined to hide their cards.
-            This button dose that.<br /><br />
-            No Skip: This button allows you to spam the "advance one turn" button
-            without skipping a player turn by accident. Nothing will occur when the
-            button is pressed on a player when this option is on.<br /><br />
-            Oh and also you can advance one turn by pressing the right arrow key.
+            <p style={{ display: "inline", fontStyle: "italic", fontWeight: "bold" }}>Hide AI</p>: By default, the oposition's cards are readily available to see.
+            Unless you're a dirty cheater, you may feel inclined to hide their cards.This button dose that.<br /><br />
+            <p style={{ display: "inline", fontStyle: "italic", fontWeight: "bold" }}>No Skip</p>: This button allows you to spam the "<p style={{ display: "inline", fontStyle: "italic" }}>advance one turn</p>"
+            button without skipping a player turn by accident. A turn will not be advanced on players when this button is on.<br /><br />
+            <p style={{ fontWeight: "bold" }}>Oh and also you can advance one turn by pressing the right arrow key.</p>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
