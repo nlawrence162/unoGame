@@ -293,8 +293,7 @@ class Game extends React.Component {
           <DialogContent>
             <DialogContentText id="rulz2">
               <p style={{ fontStyle: "italic" }}>Wikipedia dosn't know what they're talking about:</p>
-              - If you can't play a card, too bad. You will keep drawing untill you can.
-              Even if that means all 108 cards.<br /><br />
+              - Drawing cards will not end your turn. You can still play after you are forced to draw cards.<br /><br />
               - Winning doesn't end the game. It goes on until you stop playing.<br /><br />
               - You can add players and computers at will. Even during the game.<br /><br />
               - When a player reaches zero cards, they get thanos snapped.
@@ -406,10 +405,10 @@ class Game extends React.Component {
         >
           <DialogTitle id="color_pickercolor_picker">{"Pick a color: "}</DialogTitle>
           <DialogActions>
-            <Button onClick={() => this.closeColorDialog("red")} color="primary">Red</Button>
-            <Button onClick={() => this.closeColorDialog("yellow")} color="primary">Yellow</Button>
-            <Button onClick={() => this.closeColorDialog("green")} color="primary">Green</Button>
-            <Button onClick={() => this.closeColorDialog("blue")} color="primary">Blue</Button>
+            <Button onClick={() => this.closeColorDialog("red")} style={{ backgroundColor: "lightcoral" }}>Red</Button>
+            <Button onClick={() => this.closeColorDialog("yellow")} style={{ backgroundColor: "lightyellow" }}>Yellow</Button>
+            <Button onClick={() => this.closeColorDialog("green")} style={{ backgroundColor: "lightgreen" }}>Green</Button>
+            <Button onClick={() => this.closeColorDialog("blue")} style={{ backgroundColor: "lightblue" }}>Blue</Button>
           </DialogActions>
         </Dialog>
       </div>
