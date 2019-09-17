@@ -17,7 +17,7 @@ class Hand extends React.Component {
           })
         );
     }
-    //Add a draw card on the end if the player must draw a card.
+    //Add an extra draw card graphic on the end of the hand if the player must draw a card
     if (this.props.canPlay === false && this.props.player.hand.length > 0) {
       cards.push(
         React.createElement(Card, {

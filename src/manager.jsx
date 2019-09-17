@@ -300,7 +300,7 @@ class Game extends React.Component {
               - When a player reaches zero cards, they get thanos snapped.
               A message will appear declaring their victory.<br /><br />
               - The play pile makes a cool snake. Deal with it.<br /><br />
-              - Other than that. <a href="https://www.unorules.com/">Normal uno rules.</a>
+              - Other than that. <a href="https://www.unorules.com/" style={{ color: "#647a9e" }}>Normal uno rules.</a>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
