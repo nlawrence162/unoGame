@@ -244,7 +244,7 @@ class Game extends React.Component {
   //Play Buttons
   renderButtons() {
     return (
-      <div style={{ display: 'inline-block' }}>
+      <div style={{ display: 'inline-block', transform: "translateY(-3px)" }}>
         <button className="w3-button abutton" onClick={this.turnAI}><span>Advance one turn</span></button>
         <button className="w3-button pbutton" onClick={this.addAI}><span>Add AI</span></button>
         <button className="w3-button pbutton" onClick={this.addPlayer} style={{ marginRight: "10px" }}><span>Add player</span></button>

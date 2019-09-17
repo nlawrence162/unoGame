@@ -21,11 +21,10 @@ class Card extends React.Component {
   render() {
     return (
       <img
-        onClick={this.props.cardSetter !== undefined ? () => { this.props.cardSetter(this.props.card); } : undefined}
-        src={this.getImg(this.props.card)}
-        alt="card"
-        height="100px"
-        style={this.props.style === undefined ? { margin: "2px" } : this.props.style}
+        onClick={this.props.cardSetter !== undefined ? () => { this.props.cardSetter(this.props.card); } : undefined}//Passes the current card into the passed down function.
+        src={this.getImg(this.props.card)}//Sets image using card object
+        alt="card"//Required
+        style={this.props.style === undefined ? { margin: "2px", height: "100px" } : this.props.style}//Sets style to regular, or playpile style.
         className={this.props.noAni !== true ? this.props.cardSetter !== undefined ? "w3-animate-left card " + this.props.card.color : "w3-animate-left" : ""}
       />
     );

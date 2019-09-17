@@ -13,6 +13,7 @@ class PlayPile extends React.Component {
           key: i,
           noAni: true,
           style: {
+            height: "100px",
             position: "absolute",
             left: Math.max(0, this.props.playPile.length - i) * 10 + "px",
             top: Math.sin((Math.max(0, this.props.playPile.length - i) + this.props.cturn) / 10) * Math.min(Math.max(0, this.props.playPile.length - i), 50) + 45,
