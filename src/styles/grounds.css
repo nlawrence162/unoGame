@@ -37,8 +37,8 @@
     overflow: hidden;
 }
 
-.c-down {
-    transform: rotateX(180deg) translateY(-60px);
+.c-down{
+    transform: rotateX(180deg);
 }
 .c-red li{
     background: rgba(255, 0, 0, 0.5);
@@ -67,8 +67,8 @@
     height: 20px;
     bottom: -150px;
     border-radius: 10%;
-    animation: c-animate 25s linear infinite reverse;
     opacity: 0;
+    animation: c-animate 25s linear infinite reverse;
 }
 
 .circles li:nth-child(1){
@@ -152,7 +152,7 @@
 @keyframes c-animate {
 
     0%{
-        transform: rotate(0deg);
+        transform: rotate(0deg) ;
         top: 0vh;
         opacity: 0;
     }

@@ -7,13 +7,13 @@ class Player {
   plays = 0;
 
   constructor() {
-    var first = ["Ron", "Iggy", "Kronk", "Ally", "Moyst", "Flatty", "Winter", "Freakin", "Boy", "Leaky",
+    var first = ["Ron", "Iggy", "Kronk", "Ally", "Flatty", "Winter", "Freakin", "Boy", "Leaky",
       "Joane", "Flying", "Bob", "Regular", "Ilievin", "Texas", "Big", "Mr.", "Fruit", "Squish", "Syck",
       "Symour", "Prince", "River", "Green", "Oboe", "Wonder", "Dilly", "Christopher", "Dr.", "Italian"];
     var last = ["Gaytor", "Breadwater", "Pound", "Hydroblast", "Kirkcen", "Kilometere", "Man", "Floorboard", "Skeleton", "Pumpkinhead",
       "Jones", "Aeroplayne", "Jack", "Kanada", "Indiana", "Texas", "Chungus", "Squash", "Beatz", "Flute", "Bourbon",
-      "Jungle", "Field", "Pickle", "Swanson", "Windhead", "Alfredo"];
-    var middle = [" Diamond ", " Opal ", " Fetuccine ", " Master ", " Gonna ", " 'The Rock' ", " Brenard "];
+      "Jungle", "Field", "Pickle", "Swanson", "Windhead", "Alfredo", "Swiper"];
+    var middle = [" Fetuccine ", " Master ", " Gonna ", " 'The Rock' ", " Brenard ", " Von ", " O' "];
     this.name = first[Math.floor(Math.random() * first.length)]
       + (Math.random() > 0.05 ? " " : middle[Math.floor(Math.random() * middle.length)])
       + last[Math.floor(Math.random() * last.length)];
@@ -24,7 +24,9 @@ class Player {
   }
 
   playAI(playPile) {
-    if (this.hand.length === 0) return false;
+    //If no card can be played, function should be returned to repo, this is so the draw pile can be manipulated as needed.
+    if (!this.playPossible(playPile[playPile.length - 1]))
+      return { isPlayed: false, card: null };
 
     var card2play = null;
 
@@ -59,10 +61,6 @@ class Player {
         if (Player.validatePlay(playPile[playPile.length - 1], this.hand[i]))
           card2play = i;
 
-    //crap
-    if (card2play === null)
-      return { isPlayed: false, card: null }; //If no card can be played, function should be returned to repo, this is so the draw pile can be refilled if needed.
-
     playPile.push(this.hand.splice(card2play, 1)[0]);
 
     //wild cards choose color
@@ -72,6 +70,7 @@ class Player {
     return { isPlayed: true, card: playPile[playPile.length - 1] };
   }
 
+  //Checks each card in this players hand against the top card of the play pile.
   playPossible(pileCard) {
     for (let i = 0; i < this.hand.length; i++)
       if (Player.validatePlay(pileCard, this.hand[i])) return true;
@@ -79,11 +78,11 @@ class Player {
   }
 
   static validatePlay(pileCard, playCard) {
-    if (playCard.color === "black") return true;
-    if (pileCard.color === "black") return true;
-    if (playCard.color === pileCard.color) return true;
-    if (playCard.number !== -1 && playCard.number === pileCard.number) return true;
-    if (playCard.number === -1 && playCard.type === pileCard.type) return true;
+    if (playCard.color === "black") return true;//A wild card should always work.
+    if (pileCard.color === "black") return true;//So that when you are chosing a color, it dosn't prompt you to draw a card.
+    if (playCard.color === pileCard.color) return true;//Cards of the same color should always work.
+    if (playCard.number !== -1 && playCard.number === pileCard.number) return true;//Same number (-1 is reserved for non number cards)
+    if (playCard.number === -1 && playCard.type === pileCard.type) return true;//Same type (number cards do not have a type, and should not be compared)
     return false;
   }
 
