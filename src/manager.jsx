@@ -12,9 +12,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 
 import "./styles/buttons.css";
 import "./styles/options.css";
+import "./styles/curtain.css";
 import "./styles/rules.css";
 import "./styles/card.css";
-import "./styles/misc.css";
 
 //This manages the game. Calls on the repo to change values, and controlls logic.
 class Game extends React.Component {
@@ -292,7 +292,7 @@ class Game extends React.Component {
           <DialogTitle id="rules2">Okay, here it is:</DialogTitle>
           <DialogContent>
             <DialogContentText id="rulz2">
-              <p style={{ fontStyle: "italic" }}>Wikipedia dosn't know what they're talking about:</p>
+              <span style={{ fontStyle: "italic" }}>Wikipedia dosn't know what they're talking about:</span><br /><br />
               - Drawing cards will not end your turn. You can still play after you are forced to draw cards.<br /><br />
               - Winning doesn't end the game. It goes on until you stop playing.<br /><br />
               - You can add players and computers at will. Even during the game.<br /><br />
@@ -317,16 +317,16 @@ class Game extends React.Component {
           <DialogTitle id="rules3">Instructions:</DialogTitle>
           <DialogContent>
             <DialogContentText id="rulz3">
-              <p style={{ fontStyle: "italic" }}>The best way to learn the game is by clicking around and observing
-              the results, but if you would like a cheat sheet, here it is:</p>
+              <span style={{ fontStyle: "italic" }}>The best way to learn the game is by clicking around and observing
+              the results, but if you would like a cheat sheet, here it is:</span><br /><br />
               - By default, there is one player. You choose which cards they play.
               You add oponents and other players at will. But you cannot remove them.<br /><br />
               - Every player is shown on the screen, this can be disabled.
-              A computer player is represented by a <p style={{ display: "inline", color: "coral" }}>red</p> border on their turn.
-              A player is represented by a <p style={{ display: "inline", color: "MediumTurquoise " }}>blue</p> border on their turn.<br /><br />
+              A computer player is represented by a <span style={{ color: "coral" }}>red</span> border on their turn.
+              A player is represented by a <span style={{ color: "MediumTurquoise " }}>blue</span> border on their turn.<br /><br />
               - You can choose how the turns work, but the rules stay the same.
               The game won't let you make an illegal play.<br /><br />
-              <p style={{ fontWeight: "bold" }}>Note: For extra options, open the <i className="glyphicon glyphicon-cog" /> menu.</p>
+              <span style={{ fontWeight: "bold" }}>Note: For extra options, open the <i className="glyphicon glyphicon-cog" /> menu.</span>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -432,21 +432,21 @@ class Game extends React.Component {
         aria-labelledby="help"
         aria-describedby="halp"
       >
-        <DialogTitle id="help">What these options tho?</DialogTitle>
+        <DialogTitle id="help">Like, what even are these options?</DialogTitle>
         <DialogContent>
           <DialogContentText id="halp">
-            <p style={{ display: "inline", fontStyle: "italic", fontWeight: "bold" }}>Autoplay</p>: When the "advance one turn" button is clicked, it will
-            automatically play every <p style={{ display: "inline", color: "coral" }}>AI turn</p> and stop at the next <p style={{ display: "inline", color: "MediumTurquoise " }}>player</p>.
+            <span style={{ fontStyle: "italic", fontWeight: "bold" }}>Autoplay</span>: When the "advance one turn" button is clicked, it will
+            automatically play every <span style={{ color: "coral" }}>AI turn</span> and stop at the next <span style={{ color: "MediumTurquoise " }}>player</span>.
             Reverse, Skip, and Draw cards are still calculated during these turns.<br /><br />
-            <p style={{ display: "inline", fontStyle: "italic", fontWeight: "bold" }}>Hide AI</p>: By default, the oposition's cards are readily available to see.
+            <span style={{ fontStyle: "italic", fontWeight: "bold" }}>Hide AI</span>: By default, the oposition's cards are readily available to see.
             Unless you're a dirty cheater, you may feel inclined to hide their cards.This button dose that.<br /><br />
-            <p style={{ display: "inline", fontStyle: "italic", fontWeight: "bold" }}>No Skip</p>: This button allows you to spam the "<p style={{ display: "inline", fontStyle: "italic" }}>advance one turn</p>"
+            <span style={{ fontStyle: "italic", fontWeight: "bold" }}>No Skip</span>: This button allows you to spam the "<span style={{ fontStyle: "italic" }}>advance one turn</span>"
             button without skipping a player turn by accident. A turn will not be advanced on players when this button is on.<br /><br />
-            <p style={{ fontWeight: "bold" }}>Oh and also you can advance one turn by pressing the right arrow key.</p>
+            <span style={{ fontWeight: "bold" }}>Oh, and also you can advance one turn by pressing the right arrow key.</span>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.toggleHelpDialog} color="primary">thx bro</Button>
+          <Button onClick={this.toggleHelpDialog} color="primary">Thanks, bro.</Button>
         </DialogActions>
       </Dialog>
     );
