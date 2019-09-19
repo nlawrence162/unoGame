@@ -46,7 +46,7 @@
     border-left: 1px solid #fff !important;
 }
 .cogspin{
-    background-color: #fcfcfc  !important;
+    background-color: #fcfcfc  ;
     border-top: 1px solid #f1f1f1 !important;
     border-bottom: 1px solid #f1f1f1 !important;
     border-left: 1px solid #f1f1f1 !important;
@@ -64,7 +64,7 @@
     position: absolute;
     left: 49px;
     height: 45px;
-    width: 321px;
+    width: 318px;
     background-color: #ffffff;
     z-index: 1;
   }

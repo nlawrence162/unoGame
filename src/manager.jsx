@@ -12,7 +12,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 
 import "./styles/buttons.css";
 import "./styles/options.css";
-import "./styles/curtain.css";
+import "./styles/grounds.css";
 import "./styles/rules.css";
 import "./styles/card.css";
 
@@ -542,9 +542,31 @@ class Game extends React.Component {
     return React.createElement("div", { key: i, id: i, style: { padding: "5px" } }, temp);
   }
 
+  //Background
+  renderBackground() {
+    return (
+      <div className="area" >
+        <ul className={"circles c-" + this.currentColor + " " + (this.reversed ? "c-up" : "c-down")}>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div >
+    );
+  }
+
   render() {
     return (
       <div>
+        {this.renderBackground()}
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
 
