@@ -47,21 +47,15 @@ class Game extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = { repo: this.repo };
     this.currentColor = this.repo.playPile[this.repo.playPile.length - 1].color;
 
     //On right arrow key press
     document.body.onkeydown = (e) => {
-      if (e.keyCode === 39) {
+      if (e.keyCode === 39 && !this.colorOpen) {
         this.turnAI();
       }
     }
-  }
-
-  //Used to apply border properties to initial player. Must be done after the first render.
-  componentDidMount() {
-    this.borderCurrentPlayer();
   }
 
   //Called when a card is clicked on, with the card that was clicked passed in.
@@ -109,9 +103,6 @@ class Game extends React.Component {
         this.skip = false;
       }
       this.currentPlayer = this.nextPlayer()
-
-      this.removeAllBorders();
-      this.borderCurrentPlayer();
 
       this.forceDrawPlayer();
     }
@@ -167,17 +158,12 @@ class Game extends React.Component {
     //set current color to color of top playPile card
     this.currentColor = this.repo.playPile[this.repo.playPile.length - 1].color;
 
-    //Remove any borders
-    this.removeAllBorders();
-
     //All actions are done. Move to next player.
     if (this.skip) {
       this.currentPlayer = this.nextPlayer()
       this.skip = false;
     }
     this.currentPlayer = this.nextPlayer()
-
-    this.borderCurrentPlayer();
 
     //Force draw next player
     this.forceDrawPlayer();
@@ -214,24 +200,6 @@ class Game extends React.Component {
       if (this.currentPlayer > this.repo.players.length - 1)
         this.currentPlayer = 0;
     }
-  }
-  removeAllBorders() {
-    //Remove any borders
-    for (let i = 0; i < this.repo.players.length; i++) {
-      document.getElementById(i).style.border = "";
-      document.getElementById(i).style.borderRadius = "";
-      document.getElementById(i).style.padding = "5px";
-    }//Id correspond to player div's
-  }
-  borderCurrentPlayer() {
-    if (this.repo.players.length > 0) {
-      document.getElementById(this.currentPlayer).style.border = "2px solid coral";
-      if (!this.repo.players[this.currentPlayer].computer)
-        document.getElementById(this.currentPlayer).style.border = "2px solid blue";
-      document.getElementById(this.currentPlayer).style.borderRadius = "5px";
-      document.getElementById(this.currentPlayer).style.padding = "3px";
-    }
-
   }
   forceDrawPlayer() {
     while (this.forceDraw > 0) {
@@ -416,13 +384,16 @@ class Game extends React.Component {
     );
   }
   closeColorDialog = color => {
-    this.colorOpen = false;
-    this.currentColor = color;
-    this.repo.playPile[this.repo.playPile.length - 1].color = this.currentColor;
-    this.forceUpdate();
-    if (this.autoPlayAI === true && this.repo.players[this.currentPlayer].computer === true) {
-      this.turnAI();
+    if (this.colorOpen) {
+      this.colorOpen = false;
+      this.currentColor = color;
+      this.repo.playPile[this.repo.playPile.length - 1].color = this.currentColor;
+      this.forceUpdate();
+      if (this.autoPlayAI === true && this.repo.players[this.currentPlayer].computer === true) {
+        this.turnAI();
+      }
     }
+
   }
 
   renderHelpDialog() {
@@ -540,7 +511,7 @@ class Game extends React.Component {
       canPlay: this.repo.players[i].playPossible(this.repo.playPile[this.repo.playPile.length - 1]),
       key: i
     }));
-    return React.createElement("div", { key: i, id: i, style: { padding: "5px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.currentPlayer) ? { border: "2px solid blue", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
   }
   renderAIHand(i) {
     let hand = [];
@@ -555,7 +526,7 @@ class Game extends React.Component {
       var msg = this.repo.players[i].name + " (" + this.repo.players[i].hand.length + (this.repo.players[i].hand.length === 1 ? " Card Hidden)" : " Cards Hidden)");
       hand.push(React.createElement("h3", { key: i + this.repo.players.length }, msg));
     }
-    return React.createElement("div", { key: i, id: i, style: { padding: "5px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.currentPlayer) ? { border: "2px solid coral", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
   }
 
   //Background
