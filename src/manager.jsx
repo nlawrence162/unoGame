@@ -10,9 +10,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
+import "./styles/background.css";
 import "./styles/buttons.css";
 import "./styles/options.css";
-import "./styles/grounds.css";
 import "./styles/rules.css";
 import "./styles/card.css";
 
@@ -33,8 +33,8 @@ class Game extends React.Component {
   stopOnPlayer = false;
   hideComputers = false;
 
-  //used for fun
-  cturn = 0;
+  //used for the snake
+  turnCount = 0;
 
   //dialog data
   colorOpen = false;
@@ -51,7 +51,7 @@ class Game extends React.Component {
     this.state = { repo: this.repo };
     this.currentColor = this.repo.playPile[this.repo.playPile.length - 1].color;
 
-    //On space press
+    //On right arrow key press
     document.body.onkeydown = (e) => {
       if (e.keyCode === 39) {
         this.turnAI();
@@ -70,7 +70,7 @@ class Game extends React.Component {
 
     //If the card is a valid play.
     if (this.repo.validatePlay(this.repo.playPile[this.repo.playPile.length - 1], card)) {
-      this.cturn++;//Increase fun turn value to make the snake move
+      this.turnCount++;//Increase fun turn value to make the snake move
       player.plays++;//Used for win message and info
       this.repo.playPile.push(
         player.hand.splice(player.hand.indexOf(card), 1)[0]
@@ -140,7 +140,7 @@ class Game extends React.Component {
     if (player.computer === false && this.stopOnPlayer === true) return;
 
     //the turn
-    this.cturn++;
+    this.turnCount++;
     player.plays++;
     var playedCard = this.repo.doAPlayAI(this.repo.players.indexOf(player));
 
@@ -245,9 +245,9 @@ class Game extends React.Component {
   renderButtons() {
     return (
       <div style={{ display: 'inline-block', transform: "translateY(-3px)" }}>
-        <button className="w3-button abutton" onClick={this.turnAI}><span>Advance one turn</span></button>
-        <button className="w3-button pbutton" onClick={this.addAI}><span>Add AI</span></button>
-        <button className="w3-button pbutton" onClick={this.addPlayer} style={{ marginRight: "10px" }}><span>Add player</span></button>
+        <button className="w3-button turnButton" onClick={this.turnAI}><span>Advance one turn</span></button>
+        <button className="w3-button addAIButton" onClick={this.addAI}><span>Add Computer</span></button>
+        <button className="w3-button addPlayerButton" onClick={this.addPlayer} style={{ marginRight: "10px" }}><span>Add player</span></button>
       </div>
     );
   }
@@ -294,11 +294,11 @@ class Game extends React.Component {
             <DialogContentText id="rulz2">
               <span style={{ fontStyle: "italic" }}>Wikipedia dosn't know what they're talking about:</span><br /><br />
               - Drawing cards will not end your turn. You can still play after you are forced to draw cards.<br /><br />
-              - Winning doesn't end the game. It goes on until you stop playing.<br /><br />
-              - You can add players and computers at will. Even during the game.<br /><br />
+              - Winning doesn't end the game. You simply reuse the remaining cards by adding players and computers at any time.<br /><br />
+              - Shouting "UNO" won't do you any good in this game.
+              This is because robots tend to have faster reaction times than humans do.<br /><br />
               - When a player reaches zero cards, they get thanos snapped.
               A message will appear declaring their victory.<br /><br />
-              - The play pile makes a cool snake. Deal with it.<br /><br />
               - Other than that. <a href="https://www.unorules.com/" style={{ color: "#647a9e" }}>Normal uno rules.</a>
             </DialogContentText>
           </DialogContent>
@@ -318,12 +318,13 @@ class Game extends React.Component {
           <DialogContent>
             <DialogContentText id="rulz3">
               <span style={{ fontStyle: "italic" }}>The best way to learn the game is by clicking around and observing
-              the results, but if you would like a cheat sheet, here it is:</span><br /><br />
+              the results, but if you would like some pointers, here they are:</span><br /><br />
               - By default, there is one player. You choose which cards they play.
               You add oponents and other players at will. But you cannot remove them.<br /><br />
               - Every player is shown on the screen, this can be disabled.
-              A computer player is represented by a <span style={{ color: "coral" }}>red</span> border on their turn.
-              A player is represented by a <span style={{ color: "MediumTurquoise " }}>blue</span> border on their turn.<br /><br />
+              A computer player is represented by a <span style={{ color: "coral" }}>red</span> border.
+              A player is represented by a <span style={{ color: "MediumTurquoise " }}>blue</span> border.
+              These borders will appear when it is their turn to play.<br /><br />
               - You can choose how the turns work, but the rules stay the same.
               The game won't let you make an illegal play.<br /><br />
               <span style={{ fontWeight: "bold" }}>Note: For extra options, open the <i className="glyphicon glyphicon-cog" /> menu.</span>
@@ -452,20 +453,24 @@ class Game extends React.Component {
     );
   }
   toggleHelpDialog = () => {
-    this.helpOpen = !this.helpOpen;
-    this.forceUpdate();
+    if (this.optionsOpen) {
+      this.helpOpen = !this.helpOpen;
+      this.forceUpdate();
+    }
   }
 
   //Options
   renderOptions() {
     return (
-      <div style={{ display: 'inline-block', transform: "translateX(-1px) translateY(-1px)", width: "450px" }}>
-        <button id="cogButton" className="w3-button cog" onClick={this.toggleOptionsMenu}><i className="glyphicon glyphicon-cog w3-large" /></button>
-        <div id="whiteBox" className="whitebox"></div>
-        <button className={this.autoPlayAI ? "w3-button opbutton ob1" : "w3-button obutton ob1"} onClick={() => this.toggleOption(1)}>Autoplay</button>
-        <button className={this.hideComputers ? "w3-button opbutton ob1" : "w3-button obutton ob1"} onClick={() => this.toggleOption(3)}>Hide AI</button>
-        <button className={this.stopOnPlayer ? "w3-button opbutton ob1" : "w3-button obutton ob1"} onClick={() => this.toggleOption(2)}>No Skip</button>
-        <button className={"w3-button obutton ob2 wiggle"} onClick={this.toggleHelpDialog}><div><div><div>?</div></div></div></button>
+      <div id="optionsContainer" style={{ display: 'inline-block', transform: "translateX(-1px) translateY(-1px)", width: "450px" }}>
+        <div id="optionsBorder" style={{ display: 'inline-block', border: "1px solid #f1f1f1" }}>
+          <button id="cogButton" className="w3-button cog" onClick={this.toggleOptionsMenu}><i className="glyphicon glyphicon-cog w3-large" /></button>
+          <div id="whiteBox" className="whitebox"></div>
+          <button className={this.autoPlayAI ? "w3-button opbutton" : "w3-button obutton"} onClick={() => this.toggleOption(1)}>Autoplay</button>
+          <button className={this.hideComputers ? "w3-button opbutton" : "w3-button obutton"} onClick={() => this.toggleOption(3)}>Hide AI</button>
+          <button className={this.stopOnPlayer ? "w3-button opbutton" : "w3-button obutton"} onClick={() => this.toggleOption(2)}>No Skip</button>
+          <button className={"w3-button obutton ob2 wiggle"} onClick={this.toggleHelpDialog}><div><div>?</div></div></button>
+        </div>
       </div>
     );
   }
@@ -504,6 +509,17 @@ class Game extends React.Component {
 
   //Hand renderer
   renderHands() {
+    if (this.repo.players.length === 0) {
+      return (
+        <div>
+          <h2>
+            Use the <span style={{ fontStyle: "italic", color: "coral" }}>Add Computer</span> and
+            <span style={{ fontStyle: "italic", color: "MediumTurquoise " }}> Add Player</span> buttons to continue playing.
+          </h2>
+        </div>
+      );
+    }
+
     var hands = [];
     for (let i = 0; i < this.repo.players.length; i++) {
       if (!this.repo.players[i].computer && i === this.currentPlayer) {
@@ -516,30 +532,30 @@ class Game extends React.Component {
     return <>{hands}</>;
   }
   renderPlayerHand(i) {
-    let temp = [];
-    temp.push(React.createElement("h3", { key: i + this.repo.players.length }, this.repo.players[i].name + "'s hand:"));
-    temp.push(React.createElement(Hand, {
+    let hand = [];
+    hand.push(React.createElement("h3", { key: i + this.repo.players.length }, this.repo.players[i].name + "'s hand:"));
+    hand.push(React.createElement(Hand, {
       player: this.repo.players[i],
       cardSetter: this.turnPlayer,
       canPlay: this.repo.players[i].playPossible(this.repo.playPile[this.repo.playPile.length - 1]),
       key: i
     }));
-    return React.createElement("div", { key: i, id: i, style: { padding: "5px" } }, temp);
+    return React.createElement("div", { key: i, id: i, style: { padding: "5px" } }, hand);
   }
   renderAIHand(i) {
-    let temp = [];
+    let hand = [];
     if (!this.repo.players[i].computer || !this.hideComputers) {
-      temp.push(React.createElement("h3", { key: i + this.repo.players.length }, this.repo.players[i].name + "'s hand:"));
-      temp.push(React.createElement(Hand, {
+      hand.push(React.createElement("h3", { key: i + this.repo.players.length }, this.repo.players[i].name + "'s hand:"));
+      hand.push(React.createElement(Hand, {
         player: this.repo.players[i],
         key: i
       }));
     }
     else {
       var msg = this.repo.players[i].name + " (" + this.repo.players[i].hand.length + (this.repo.players[i].hand.length === 1 ? " Card Hidden)" : " Cards Hidden)");
-      temp.push(React.createElement("h3", { key: i + this.repo.players.length }, msg));
+      hand.push(React.createElement("h3", { key: i + this.repo.players.length }, msg));
     }
-    return React.createElement("div", { key: i, id: i, style: { padding: "5px" } }, temp);
+    return React.createElement("div", { key: i, id: i, style: { padding: "5px" } }, hand);
   }
 
   //Background
@@ -577,9 +593,9 @@ class Game extends React.Component {
 
         <button
           id="rulesButton"
-          className="w3-button rulesr"
+          className="w3-button rulesHide"
           style={{ marginTop: "5px", width: "100px", borderRadius: "12px" }}
-          onClick={() => { this.closeRulesDialog(1, true); document.getElementById("rulesButton").className = "w3-button rulesp" }}>
+          onClick={() => { this.closeRulesDialog(1, true); document.getElementById("rulesButton").className = "w3-button rulesPressed" }} >
           <span style={{ float: "left" }}>rules</span>
         </button>
 
@@ -588,9 +604,10 @@ class Game extends React.Component {
           borderLeft: "4px solid " + this.currentColor,
           backgroundColor: "light" + (this.currentColor === "red" ? "coral" : this.currentColor)
         }}> &nbsp;Play Pile: </h3>
-        <PlayPile playPile={this.state.repo.playPile} cturn={this.cturn} />
+        <PlayPile playPile={this.state.repo.playPile} turnCount={this.turnCount} />
 
         {this.renderHands()}
+
         {this.renderRulesDialog()}
         {this.renderWinDialog()}
         {this.renderColorDialog()}

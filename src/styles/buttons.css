@@ -1,21 +1,38 @@
-.abutton {
+.turnButton{
+  width: 190px;
+}
+.addAIButton{
+  width: 160px;
+}
+.addPlayerButton{
+  width: 130px;
+}
+
+.turnButton span:after{
+  content: '\00bb';
+}
+.addAIButton span:after, .addPlayerButton span:after {
+  content: '+';
+}
+
+.turnButton, .addAIButton, .addPlayerButton {
   border: none;
   text-align: center;
   transition: all 0.5s;
   cursor: pointer;
-  width: 190px;
+  /*width*/
   height: 40px;
 }
 
-.abutton span,.pbutton span {
+.turnButton span,.addAIButton span,.addPlayerButton span {
+  /*content*/
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.abutton span:after {
-  content: '\00bb';
+.turnButton span:after, .addAIButton span:after, .addPlayerButton span:after {
   position: absolute;
   opacity: 0;
   top: 0;
@@ -23,32 +40,13 @@
   transition: 0.5s;
 }
 
-.abutton:hover span, .pbutton:hover span {
+.turnButton:hover span, .addAIButton:hover span,.addPlayerButton:hover span {
   padding-right: 25px;
 }
 
-.abutton:hover span:after, .pbutton:hover span:after {
+.turnButton:hover span:after, .addAIButton:hover span:after,.addPlayerButton:hover span:after {
   opacity: 1;
   right: 0;
-}
-
-
-.pbutton{
-border: none;
-text-align: center;
-transition: all 0.5s;
-cursor: pointer;
-width: 130px;
-height: 40px;
-}
-
-.pbutton span:after {
-content: '+';
-position: absolute;
-opacity: 0;
-top: 0;
-right: -50px;
-transition: 0.5s;
 }
 
 /* Chrome */

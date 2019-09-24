@@ -152,7 +152,7 @@
 @keyframes c-animate {
 
     0%{
-        transform: rotate(0deg) ;
+        transform: rotate(0deg);
         top: 0vh;
         opacity: 0;
     }

@@ -1,78 +1,51 @@
-.obutton {
+.obutton, .opbutton {
     height: 45px;
     transition: all 0.2s;
     background-color: #fcfcfc !important;
   }
 
-  .ob1{
-    border-top: 1px solid #f1f1f1 !important;
-    border-bottom: 1px solid #f1f1f1 !important;
-  }
-  .ob2{
-    border: 1px solid #f1f1f1 !important;
-    transform: translateX(-1px);
-  }
-
   .opbutton {
-    height: 45px;
-    transition: all 0.2s;
-    border-top: 1px solid #d5d3eb !important;
-    border-bottom: 1px solid #cdcaf0 !important;
     background-color: #b6c4d4 !important;
   }
 
+/*Gear Icon*/
 .cog i, .cogspin i{
     transform: translate(-1px,1px);
     transition: all 0.2s;
 }
-
 .cog:hover i{
     transform: translate(-1px,1px) rotate(-45deg);
 }
-
-/*Button size*/
-.cog, .cogspin {
-    width: 50px;
-    height: 45px;
-}
-
 .cogspin i{
     animation: spin .8s linear 0s infinite;
 }
-.cog{
+
+/*Options button*/
+.cog, .cogspin {
+    width: 50px;
+    height: 45px;
     background-color: #fff !important;
-    border-top: 1px solid #fff !important;
-    border-bottom: 1px solid #fff !important;
-    border-left: 1px solid #fff !important;
 }
 .cogspin{
-    background-color: #fcfcfc  ;
-    border-top: 1px solid #f1f1f1 !important;
-    border-bottom: 1px solid #f1f1f1 !important;
-    border-left: 1px solid #f1f1f1 !important;
-}
-
-@keyframes spin{
-    from {transform: translate(-1px,1px) rotate(0deg);}
-    to {transform: translate(-1px,1px) rotate(-45deg);}
+    background-color: #fcfcfc  !important;
 }
 
 .whitebox {
     display: inline-block;
-    transition: transform .5s;
+    transition: transform .3s;
     transform-origin: left;
     position: absolute;
-    left: 49px;
+    left: 51px;
     height: 45px;
-    width: 318px;
-    background-color: #ffffff;
+    width: 316px;
+    background-color: #fff;
     z-index: 1;
   }
 
 .squish {
     transform: scaleX(0);
     transform-origin: right;
-}  
+}
 
 .wiggle:hover div{
     animation-name: wiggle;
@@ -84,13 +57,6 @@
 .wiggle:hover div div{
     animation-name: float;
     animation-duration: 3.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(.82,.4,.16,.57);
-}
-
-.wiggle:hover div div div{
-    animation-name: hover;
-    animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(.82,.4,.16,.57);
 }
@@ -107,9 +73,7 @@
     100% {transform: translateY(2px)}
 }
 
-@keyframes hover{
-    0% {transform: translateX(1px)}
-    50% {transform: translateX(-1px)}
-    100% {transform: translateX(1px)}
+@keyframes spin{
+    from {transform: translate(-1px,1px) rotate(0deg);}
+    to {transform: translate(-1px,1px) rotate(-45deg);}
 }
-

@@ -55,7 +55,7 @@ class Player {
         if (this.hand[i].color !== "black" && Player.validatePlay(playPile[playPile.length - 1], this.hand[i]))
           card2play = i;
 
-    //Oh god please have a super special card.
+    //Find the wild card
     if (card2play === null)
       for (let i = 0; i < this.hand.length; i++)
         if (Player.validatePlay(playPile[playPile.length - 1], this.hand[i]))

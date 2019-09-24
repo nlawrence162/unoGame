@@ -61,7 +61,7 @@ class Deck {
         this.cards.push(newCard);
       }
     }
-    //Special Cards
+    //Wild Cards
     for (let i = 0; i < 4; i++) {
       newCard = new Card();
       newCard.type = "wild";
