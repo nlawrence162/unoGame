@@ -51,7 +51,7 @@ class Game extends React.Component {
 
     //On right arrow key press
     document.body.onkeydown = (e) => {
-      if (e.keyCode === 39 && !this.colorOpen) {
+      if (e.keyCode === 39 && !this.colorOpen && !this.winnerOpen) {
         this.turnAI();
       }
     }
@@ -68,8 +68,6 @@ class Game extends React.Component {
       this.repo.playPile.push(
         player.hand.splice(player.hand.indexOf(card), 1)[0]
       );//Add the card to the play pile and remove it from the players hand.
-
-      this.removeWinningPlayer(player);
 
       //Reverse
       if (card.type === "reverse") {
@@ -92,6 +90,8 @@ class Game extends React.Component {
         this.colorOpen = true;//Opens the color selection menu for wild cards.
         this.forceUpdate();
       }
+      //Now that card has been fully played. Destroy this boi.
+      this.removeWinningPlayer(player);
 
       //set current color to color of top playPile card
       this.currentColor = this.repo.playPile[this.repo.playPile.length - 1].color;//Used for the draw pile backround color
@@ -189,7 +189,7 @@ class Game extends React.Component {
     return currentPlayer;
   }
   removeWinningPlayer(player) {
-    if (this.repo.players[this.repo.players.indexOf(player)].hand.length === 0) {
+    if (player.hand.length === 0) {
       this.winningMessage = player.name + " has won in " + player.plays + " turns!";//Set the winning message.
       this.winnerOpen = true;//Set the message to open
       this.repo.players.splice(this.repo.players.indexOf(player), 1);//Remove the player
@@ -235,6 +235,18 @@ class Game extends React.Component {
   }
 
   //Dialogs
+  renderDialogs() {
+    //Only render one dialog at a time.
+    if (this.rules1Open || this.rules2Open || this.rules3Open)
+      return (this.renderRulesDialog());
+    if (this.helpOpen)
+      return (this.renderHelpDialog());
+    if (this.colorOpen)
+      return (this.renderColorDialog());
+    if (this.winnerOpen)
+      return (this.renderWinDialog());
+  }
+
   renderRulesDialog() {
     return (
       <div>
@@ -577,11 +589,7 @@ class Game extends React.Component {
         <PlayPile playPile={this.repo.playPile} turnCount={this.turnCount} />
 
         {this.renderHands()}
-
-        {this.renderRulesDialog()}
-        {this.renderWinDialog()}
-        {this.renderColorDialog()}
-        {this.renderHelpDialog()}
+        {this.renderDialogs()}
       </div>
     );
   }
