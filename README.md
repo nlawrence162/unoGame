@@ -17,5 +17,5 @@ This project utilizes the *fisher-yates* shuffle: https://bost.ocks.org/mike/shu
 #### Styles:
 
 Imported styles include [W3](https://www.w3schools.com/w3css/w3css_downloads.asp) buttons and [Bootstrap](https://getbootstrap.com/docs/3.4/css/) icons.  
-Backround edited from a template by Mohammad Abdul Mohaiman: https://codepen.io/mohaiman/pen/MQqMyo. 
+Backround edited from a template by Mohammad Abdul Mohaiman: https://codepen.io/mohaiman/pen/MQqMyo.  
 Dialogs from material-ui: https://material-ui.com/.
