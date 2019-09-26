@@ -1,31 +1,14 @@
-.turnButton{
-  width: 190px;
-}
-.addAIButton{
-  width: 160px;
-}
-.addPlayerButton{
-  width: 130px;
-}
-
-.turnButton span:after{
-  content: '\00bb';
-}
-.addAIButton span:after, .addPlayerButton span:after {
-  content: '+';
-}
-
 .turnButton, .addAIButton, .addPlayerButton {
   border: none;
   text-align: center;
   transition: all 0.5s;
   cursor: pointer;
-  /*width*/
+  /*variable width*/
   height: 40px;
 }
 
 .turnButton span,.addAIButton span,.addPlayerButton span {
-  /*content*/
+  /*variable content*/
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -48,6 +31,26 @@
   opacity: 1;
   right: 0;
 }
+
+/*Variable Width for each button*/
+.turnButton{
+  width: 190px;
+}
+.addAIButton{
+  width: 160px;
+}
+.addPlayerButton{
+  width: 130px;
+}
+
+/*Different symbols for buttons*/
+.turnButton span:after{
+  content: '\00bb';
+}
+.addAIButton span:after, .addPlayerButton span:after {
+  content: '+';
+}
+
 
 /* Chrome */
 button {

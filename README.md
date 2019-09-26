@@ -4,6 +4,10 @@
 
 You can play it [here](https://github.chrobinson.com/pages/lawrnat/internuno/). (Recommended platform: PC, Chrome Browser)
 
+## Why is this here?
+
+This program was created by an IT intern(me) in order to show off what I currently know about the [React]https://reactjs.org/ framework.
+
 ## Credits
 
 #### Assets:

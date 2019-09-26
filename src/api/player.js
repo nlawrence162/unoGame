@@ -7,13 +7,13 @@ class Player {
   plays = 0;
 
   constructor() {
-    var first = ["Ron", "Iggy", "Kronk", "Ally", "Flatty", "Winter", "Freakin", "Boy", "Leaky",
+    var first = ["Ron", "Iggy", "Kronk", "Ally", "Flatty", "Winter", "Freakin", "Boy", "Leaky", "Shelly",
       "Joane", "Flying", "Bob", "Regular", "Ilievin", "Texas", "Big", "Mr.", "Fruit", "Squish", "Syck",
       "Symour", "Prince", "River", "Green", "Oboe", "Wonder", "Dilly", "Christopher", "Dr.", "Italian"];
     var last = ["Gaytor", "Breadwater", "Pound", "Hydroblast", "Kirkcen", "Kilometere", "Man", "Floorboard", "Skeleton", "Pumpkinhead",
       "Jones", "Aeroplayne", "Jack", "Kanada", "Indiana", "Texas", "Chungus", "Squash", "Beatz", "Flute", "Bourbon",
       "Jungle", "Field", "Pickle", "Swanson", "Windhead", "Alfredo", "Swiper"];
-    var middle = [" Fetuccine ", " Master ", " Gonna ", " 'The Rock' ", " Brenard ", " Von ", " O' "];
+    var middle = [" Fetuccine ", " 'The Rock' ", " Von ", " O' "];
     this.name = first[Math.floor(Math.random() * first.length)]
       + (Math.random() > 0.05 ? " " : middle[Math.floor(Math.random() * middle.length)])
       + last[Math.floor(Math.random() * last.length)];
@@ -96,7 +96,8 @@ class Player {
     for (var key of Object.keys(colors))
       if (colors[key] > colors[color]) color = key;
 
-    return Math.random() > .05 ? color : Object.keys(colors)[Math.floor(Math.random() * Object.keys(colors).length)];//low chance of choosing random color. This prevents softlocks.
+    //low chance of choosing random color. This prevents some softlocks.
+    return Math.random() > .05 ? color : Object.keys(colors)[Math.floor(Math.random() * Object.keys(colors).length)];
   }
 }
 
