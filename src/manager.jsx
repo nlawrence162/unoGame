@@ -47,7 +47,6 @@ class Game extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { repo: this.repo };
     this.currentColor = this.repo.playPile[this.repo.playPile.length - 1].color;
 
     //On right arrow key press
@@ -483,11 +482,11 @@ class Game extends React.Component {
     if (this.repo.players.length === 0) {
       return (
         <div>
-          <h2>
+          <h2 style={{ margin: "5px" }}>
             Use the <span style={{ fontStyle: "italic", color: "coral" }}>Add Computer</span> and
             <span style={{ fontStyle: "italic", color: "MediumTurquoise " }}> Add Player</span> buttons to continue playing.
           </h2>
-        </div>
+        </div >
       );
     }
 
@@ -575,7 +574,7 @@ class Game extends React.Component {
           borderLeft: "4px solid " + this.currentColor,
           backgroundColor: "light" + (this.currentColor === "red" ? "coral" : this.currentColor)
         }}> &nbsp;Play Pile: </h3>
-        <PlayPile playPile={this.state.repo.playPile} turnCount={this.turnCount} />
+        <PlayPile playPile={this.repo.playPile} turnCount={this.turnCount} />
 
         {this.renderHands()}
 
