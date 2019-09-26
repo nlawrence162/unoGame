@@ -50,7 +50,7 @@ class Game extends React.Component {
     this.currentColor = this.repo.playPile[this.repo.playPile.length - 1].color;
 
     //On right arrow key press
-    document.body.onkeydown = (e) => {
+    window.onkeydown = (e) => {
       if (e.keyCode === 39 && !this.colorOpen && !this.winnerOpen) {
         this.turnAI();
       }
