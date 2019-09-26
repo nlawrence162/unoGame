@@ -6,7 +6,7 @@ class PlayPile extends React.Component {
 
   render() {
     var cards = [];
-    for (let i = this.props.playPile.length - 1; i >= Math.max(0, this.props.playPile.length - 108); i--) {
+    for (let i = this.props.playPile.length - 1; i >= 0; i--) {
       if (this.props.playPile[i] !== undefined || this.props.playPile[i] !== null) {
         cards.push(React.createElement(Card, {
           card: this.props.playPile[i],

@@ -14,7 +14,7 @@ import "./styles/background.css";
 import "./styles/buttons.css";
 import "./styles/options.css";
 import "./styles/rules.css";
-import "./styles/card.css";
+import "./styles/hand.css";
 
 //This manages the game. Calls on the repo to change values, and controlls logic.
 class Game extends React.Component {
@@ -404,7 +404,6 @@ class Game extends React.Component {
         this.turnAI();
       }
     }
-
   }
 
   renderHelpDialog() {
@@ -507,7 +506,7 @@ class Game extends React.Component {
       if (!this.repo.players[i].computer && i === this.currentPlayer) {
         hands.push(this.renderPlayerHand(i));
       } else {
-        hands.push(this.renderAIHand(i));
+        hands.push(this.renderStaticHand(i));
       }
     }
 
@@ -522,22 +521,19 @@ class Game extends React.Component {
       canPlay: this.repo.players[i].playPossible(this.repo.playPile[this.repo.playPile.length - 1]),
       key: i
     }));
-    return React.createElement("div", { key: i, id: i, style: (i === this.currentPlayer) ? { border: "2px solid blue", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.currentPlayer) ? { border: "3px blue", borderStyle: "double none", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
   }
-  renderAIHand(i) {
+  renderStaticHand(i) {
     let hand = [];
     if (!this.repo.players[i].computer || !this.hideComputers) {
-      hand.push(React.createElement("h3", { key: i + this.repo.players.length }, this.repo.players[i].name + "'s hand:"));
-      hand.push(React.createElement(Hand, {
-        player: this.repo.players[i],
-        key: i
-      }));
+      hand.push(<h3 key={i + this.repo.players.length}>{this.repo.players[i].name + "'s hand:"}</h3>);
+      hand.push(<Hand player={this.repo.players[i]} key={i} />);
     }
     else {
       var msg = this.repo.players[i].name + " (" + this.repo.players[i].hand.length + (this.repo.players[i].hand.length === 1 ? " Card Hidden)" : " Cards Hidden)");
       hand.push(React.createElement("h3", { key: i + this.repo.players.length }, msg));
     }
-    return React.createElement("div", { key: i, id: i, style: (i === this.currentPlayer) ? { border: "2px solid coral", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.currentPlayer) ? { border: "3px coral", borderStyle: "double none", borderRadius: "10px", padding: "3px" } : { padding: "6px 3px" } }, hand);
   }
 
   //Background
