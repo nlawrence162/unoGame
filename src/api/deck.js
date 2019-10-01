@@ -22,9 +22,9 @@ class Deck {
     let newCard;
     for (var i = 0; i < 1000; i++) {
       //Color cards.
-      for (let c = 0; c < 4; c++) { //Color
+      /*for (let c = 0; c < 4; c++) { //Color
         //Number cards
-        /*for (let i = 0; i < 10; i++) { //Numbers
+        for (let i = 0; i < 10; i++) { //Numbers
           if (i === 0) {
             //Only one zero card.
             newCard = new Card();
@@ -43,7 +43,7 @@ class Deck {
             newCard.number = i;
             this.cards.push(newCard);
           }
-        }*/
+        }
         //Action cards
         for (let i = 0; i < 2; i++) {
           newCard = new Card();
@@ -66,12 +66,12 @@ class Deck {
       for (let i = 0; i < 4; i++) {
         newCard = new Card();
         newCard.type = "wild";
-        this.cards.push(newCard);
+        this.cards.push(newCard);*/
 
-        newCard = new Card();
-        newCard.type = "wild_picker";
-        this.cards.push(newCard);
-      }
+      newCard = new Card();
+      newCard.type = "wild_picker";
+      this.cards.push(newCard);
+
     }
   }
 }
