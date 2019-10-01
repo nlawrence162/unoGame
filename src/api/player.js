@@ -7,12 +7,10 @@ class Player {
   plays = 0;
 
   constructor() {
-    var first = ["Ron", "Iggy", "Kronk", "Ally", "Flatty", "Winter", "Freakin", "Boy", "Leaky", "Shelly",
-      "Joane", "Flying", "Bob", "Regular", "Ilievin", "Texas", "Big", "Mr.", "Fruit", "Squish", "Syck",
-      "Symour", "Prince", "River", "Green", "Oboe", "Wonder", "Dilly", "Christopher", "Dr.", "Italian"];
-    var last = ["Gaytor", "Breadwater", "Pound", "Hydroblast", "Kirkcen", "Kilometere", "Man", "Floorboard", "Skeleton", "Pumpkinhead",
-      "Jones", "Aeroplayne", "Jack", "Kanada", "Indiana", "Texas", "Chungus", "Squash", "Beatz", "Flute", "Bourbon",
-      "Jungle", "Field", "Pickle", "Swanson", "Windhead", "Alfredo", "Swiper"];
+    var first = ["Ron", "Iggy", "Kronk", "Ally", "Flatty", "Winter", "Freakin", "Boy", "Leaky", "Shelly","Joane", "Flying", "Bob", "Regular", "Ilievin", 
+    "Texas", "Big", "Mr.", "Fruit", "Squish", "Syck", "Rich","Symour", "Prince", "River", "Green", "Oboe", "Wonder", "Dilly", "Christopher", "Dr.", "Italian"];
+    var last = ["Gaytor", "Breadwater", "Pound", "Hydroblast", "Kirkcen", "Kilometere", "Man", "Floorboard", "Skeleton", "Pumpkinhead", "Jones", "Aeroplayne", "Jack", 
+    "Kanada", "Indiana", "Texas", "Chungus", "Squash", "Beatz", "Flute", "Bourbon", "Mahogany","Jungle", "Field", "Pickle", "Swanson", "Windhead", "Alfredo", "Swiper"];
     var middle = [" Fetuccine ", " 'The Rock' ", " Von ", " O' "];
     this.name = first[Math.floor(Math.random() * first.length)]
       + (Math.random() > 0.05 ? " " : middle[Math.floor(Math.random() * middle.length)])
@@ -28,62 +26,51 @@ class Player {
     if (!this.playPossible(playPile[playPile.length - 1]))
       return { isPlayed: false, card: null };
 
-    var card2play = null;
+    var pileCard = playPile[playPile.length - 1];
+    var currentCardObj = { card: this.hand[0], rank: 6 };
 
-    //First try to get a regular number card of the same color
-    for (let i = 0; i < this.hand.length; i++)
-      if (this.hand[i].type === "" && Player.validatePlay(playPile[playPile.length - 1], this.hand[i]))
-        if (this.hand[i].color === playPile[playPile.length - 1].color)
-          card2play = i;
+    for (let i = 0; i < this.hand.length; i++) {
+      var validatedObj = Player.validatePlay(pileCard, this.hand[i]);
+      if (validatedObj.play && validatedObj.rank < currentCardObj.rank) {
+        currentCardObj = { card: this.hand[i], rank: validatedObj.rank };
+      }
+    }
 
-    //Then try to find a special card of the same color
-    if (card2play === null)
-      for (let i = 0; i < this.hand.length; i++)
-        if (this.hand[i].color !== "black" && Player.validatePlay(playPile[playPile.length - 1], this.hand[i]))
-          if (this.hand[i].color === playPile[playPile.length - 1].color)
-            card2play = i;
-
-    //Then try to find a regular card of the same number (any color)
-    if (card2play === null)
-      for (let i = 0; i < this.hand.length; i++)
-        if (this.hand[i].type === "" && Player.validatePlay(playPile[playPile.length - 1], this.hand[i]))
-          card2play = i;
-
-    //Then try to find a special card of any color
-    if (card2play === null)
-      for (let i = 0; i < this.hand.length; i++)
-        if (this.hand[i].color !== "black" && Player.validatePlay(playPile[playPile.length - 1], this.hand[i]))
-          card2play = i;
-
-    //Find the wild card
-    if (card2play === null)
-      for (let i = 0; i < this.hand.length; i++)
-        if (Player.validatePlay(playPile[playPile.length - 1], this.hand[i]))
-          card2play = i;
-
-    playPile.push(this.hand.splice(card2play, 1)[0]);
+    playPile.push(this.hand.splice(this.hand.indexOf(currentCardObj.card), 1)[0]);
+    pileCard = playPile[playPile.length - 1];
 
     //wild cards choose color
-    if (playPile[playPile.length - 1].type === "wild" || playPile[playPile.length - 1].type === "wild_picker")
-      playPile[playPile.length - 1].color = Player.getBestColor(this.hand);
+    if (pileCard.type === "wild" || pileCard.type === "wild_picker")
+      pileCard.color = Player.getBestColor(this.hand);
 
-    return { isPlayed: true, card: playPile[playPile.length - 1] };
+    return { isPlayed: true, card: pileCard };
   }
 
   //Checks each card in this players hand against the top card of the play pile.
   playPossible(pileCard) {
     for (let i = 0; i < this.hand.length; i++)
-      if (Player.validatePlay(pileCard, this.hand[i])) return true;
+      if (Player.validatePlay(pileCard, this.hand[i]).play) return true;
     return false;
   }
 
   static validatePlay(pileCard, playCard) {
-    if (playCard.color === "black") return true;//A wild card should always work.
-    if (pileCard.color === "black") return true;//So that when you are chosing a color, it dosn't prompt you to draw a card.
-    if (playCard.color === pileCard.color) return true;//Cards of the same color should always work.
-    if (playCard.number !== -1 && playCard.number === pileCard.number) return true;//Same number (-1 is reserved for non number cards)
-    if (playCard.number === -1 && playCard.type === pileCard.type) return true;//Same type (number cards do not have a type, and should not be compared)
-    return false;
+    if (pileCard.color === "black") return { play: true, rank: 0 };//So that when you are chosing a color, it dosn't prompt you to draw a card.
+    var rank = 0;
+
+    if (playCard.color === pileCard.color) { //Color match
+      rank = 1; //Number cards
+      if (playCard.number === -1) rank = 2; //Special cards
+    }
+    if (playCard.number !== -1) { //Number cards
+      if (playCard.number === pileCard.number) rank = 3; //Number match
+    }
+    else { //Special cards
+      if (playCard.type === pileCard.type) rank = 4; //Type match
+    }
+    if (playCard.color === "black") rank = 5; //Wild cards match
+
+    if (rank === 0) return { play: false, rank: -1 };
+    else return { play: true, rank: rank };
   }
 
   static getBestColor(hand) {
@@ -96,8 +83,7 @@ class Player {
     for (var key of Object.keys(colors))
       if (colors[key] > colors[color]) color = key;
 
-    //low chance of choosing random color. This prevents some softlocks.
-    return Math.random() > .05 ? color : Object.keys(colors)[Math.floor(Math.random() * Object.keys(colors).length)];
+    return color;
   }
 }
 

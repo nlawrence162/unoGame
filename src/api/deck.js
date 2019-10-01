@@ -20,56 +20,58 @@ class Deck {
 
   constructor() {
     let newCard;
-    //Color cards.
-    for (let c = 0; c < 4; c++) {
-      //Number cards
-      for (let i = 0; i < 10; i++) {
-        if (i === 0) {
-          //Only one zero card.
+    for (var i = 0; i < 1000; i++) {
+      //Color cards.
+      for (let c = 0; c < 4; c++) { //Color
+        //Number cards
+        /*for (let i = 0; i < 10; i++) { //Numbers
+          if (i === 0) {
+            //Only one zero card.
+            newCard = new Card();
+            newCard.color = colors[c];
+            newCard.number = i;
+            this.cards.push(newCard);
+          } else {
+            //Two of each other card
+            newCard = new Card();
+            newCard.color = colors[c];
+            newCard.number = i;
+            this.cards.push(newCard);
+
+            newCard = new Card();
+            newCard.color = colors[c];
+            newCard.number = i;
+            this.cards.push(newCard);
+          }
+        }*/
+        //Action cards
+        for (let i = 0; i < 2; i++) {
           newCard = new Card();
+          newCard.type = "skip";
           newCard.color = colors[c];
-          newCard.number = i;
-          this.cards.push(newCard);
-        } else {
-          //Two of each other card
-          newCard = new Card();
-          newCard.color = colors[c];
-          newCard.number = i;
           this.cards.push(newCard);
 
           newCard = new Card();
+          newCard.type = "picker";
           newCard.color = colors[c];
-          newCard.number = i;
+          this.cards.push(newCard);
+
+          newCard = new Card();
+          newCard.type = "reverse";
+          newCard.color = colors[c];
           this.cards.push(newCard);
         }
       }
-      //Action cards
-      for (let i = 0; i < 2; i++) {
+      //Wild Cards
+      for (let i = 0; i < 4; i++) {
         newCard = new Card();
-        newCard.type = "skip";
-        newCard.color = colors[c];
+        newCard.type = "wild";
         this.cards.push(newCard);
 
         newCard = new Card();
-        newCard.type = "picker";
-        newCard.color = colors[c];
-        this.cards.push(newCard);
-
-        newCard = new Card();
-        newCard.type = "reverse";
-        newCard.color = colors[c];
+        newCard.type = "wild_picker";
         this.cards.push(newCard);
       }
-    }
-    //Wild Cards
-    for (let i = 0; i < 4; i++) {
-      newCard = new Card();
-      newCard.type = "wild";
-      this.cards.push(newCard);
-
-      newCard = new Card();
-      newCard.type = "wild_picker";
-      this.cards.push(newCard);
     }
   }
 }
