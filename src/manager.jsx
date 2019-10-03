@@ -1,14 +1,8 @@
 import React from "react";
 import Repo from "./api/repo.js";
-import PlayPile from "./components/playpile.jsx";
-import Hand from "./components/hand.jsx";
+import Controls from "./components/controls.jsx";
+import PlayArea from "./components/playarea.jsx";
 import Dialogs from "./components/dialogs.jsx";
-
-import "./styles/background.css";
-import "./styles/buttons.css";
-import "./styles/options.css";
-import "./styles/rules.css";
-import "./styles/hand.css";
 
 //This manages the game. Calls on the repo to change values, and controlls logic.
 class Game extends React.Component {
@@ -51,7 +45,6 @@ class Game extends React.Component {
     }
   }
 
-  //Called when a card is clicked on, with the card that was clicked passed in.
   turnPlayer = card => {
     var player = this.repo.players[this.currentPlayer];
 
@@ -202,16 +195,7 @@ class Game extends React.Component {
     }
   }
 
-  //Play Buttons
-  renderButtons() {
-    return (
-      <div style={{ display: 'inline-block', transform: "translateY(-3px)" }}>
-        <button className="w3-button turnButton" onClick={this.turnAI}><span>Advance one turn</span></button>
-        <button className="w3-button addAIButton" onClick={this.addAI}><span>Add Computer</span></button>
-        <button className="w3-button addPlayerButton" onClick={this.addPlayer} style={{ marginRight: "10px" }}><span>Add player</span></button>
-      </div>
-    );
-  }
+  //Play actions
   addAI = () => {
     if (this.repo.deck.length <= 7) this.repo.updateDeck();
     if (this.repo.deck.length > 7) {
@@ -284,21 +268,7 @@ class Game extends React.Component {
     }
   }
 
-  //Options
-  renderOptions() {
-    return (
-      <div id="optionsContainer" style={{ display: 'inline-block', transform: "translateX(-1px) translateY(-1px)", width: "450px" }}>
-        <div id="optionsBorder" style={{ display: 'inline-block', border: "1px solid #f1f1f1" }}>
-          <button id="cogButton" className="w3-button cog" onClick={this.toggleOptionsMenu}><i className="glyphicon glyphicon-cog w3-large" /></button>
-          <div id="whiteBox" className="whitebox"></div>
-          <button className={this.autoPlayAI ? "w3-button opbutton" : "w3-button obutton"} onClick={() => this.toggleOption(1)}>Autoplay</button>
-          <button className={this.hideComputers ? "w3-button opbutton" : "w3-button obutton"} onClick={() => this.toggleOption(3)}>Hide AI</button>
-          <button className={this.stopOnPlayer ? "w3-button opbutton" : "w3-button obutton"} onClick={() => this.toggleOption(2)}>No Skip</button>
-          <button className={"w3-button obutton ob2 wiggle"} onClick={this.toggleHelpDialog}><div><div>?</div></div></button>
-        </div>
-      </div>
-    );
-  }
+  //Option actions
   toggleOptionsMenu = () => {
     if (this.optionsOpen) {
       this.optionsOpen = false;
@@ -312,7 +282,7 @@ class Game extends React.Component {
     }
     this.forceUpdate();
   }
-  toggleOption(option) {
+  toggleOption = (option) => {
     switch (option) {
       case 1:
         this.autoPlayAI = !this.autoPlayAI;
@@ -330,54 +300,6 @@ class Game extends React.Component {
         break;
     }
     this.forceUpdate();
-  }
-
-  //Hand renderer
-  renderHands() {
-    if (this.repo.players.length === 0) {
-      return (
-        <div>
-          <h2 style={{ margin: "5px" }}>
-            Use the <span style={{ fontStyle: "italic", color: "coral" }}>Add Computer</span> and
-            <span style={{ fontStyle: "italic", color: "MediumTurquoise " }}> Add Player</span> buttons to continue playing.
-          </h2>
-        </div >
-      );
-    }
-
-    var hands = [];
-    for (let i = 0; i < this.repo.players.length; i++) {
-      if (!this.repo.players[i].computer && i === this.currentPlayer) {
-        hands.push(this.renderPlayerHand(i));
-      } else {
-        hands.push(this.renderStaticHand(i));
-      }
-    }
-
-    return <>{hands}</>;
-  }
-  renderPlayerHand(i) {
-    let hand = [];
-    hand.push(React.createElement("h3", { key: i + this.repo.players.length }, this.repo.players[i].name + "'s hand:"));
-    hand.push(React.createElement(Hand, {
-      player: this.repo.players[i],
-      cardSetter: this.turnPlayer,
-      canPlay: this.repo.players[i].playPossible(this.repo.playPile[this.repo.playPile.length - 1]),
-      key: i
-    }));
-    return React.createElement("div", { key: i, id: i, style: (i === this.currentPlayer) ? { border: "3px blue", borderStyle: "double none", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
-  }
-  renderStaticHand(i) {
-    let hand = [];
-    if (!this.repo.players[i].computer || !this.hideComputers) {
-      hand.push(<h3 key={i + this.repo.players.length}>{this.repo.players[i].name + "'s hand:"}</h3>);
-      hand.push(<Hand player={this.repo.players[i]} key={i} />);
-    }
-    else {
-      var msg = this.repo.players[i].name + " (" + this.repo.players[i].hand.length + (this.repo.players[i].hand.length === 1 ? " Card Hidden)" : " Cards Hidden)");
-      hand.push(React.createElement("h3", { key: i + this.repo.players.length }, msg));
-    }
-    return React.createElement("div", { key: i, id: i, style: (i === this.currentPlayer) ? { border: "3px coral", borderStyle: "double none", borderRadius: "10px", padding: "3px" } : { padding: "6px 3px" } }, hand);
   }
 
   //Background
@@ -410,25 +332,25 @@ class Game extends React.Component {
 
         <div id="curtain"></div>
 
-        {this.renderButtons()}
-        {this.renderOptions()}
+        <Controls
+          turnAI={this.turnAI}
+          addAI={this.addAI}
+          addPlayer={this.addPlayer}
+          toggleOptionsMenu={this.toggleOptionsMenu}
+          toggleOption={this.toggleOption}
+          autoPlayAI={this.autoPlayAI}
+          hideComputers={this.hideComputers}
+          stopOnPlayer={this.stopOnPlayer}
+          toggleHelpDialog={this.toggleHelpDialog}
+          closeRulesDialog={this.closeRulesDialog} />
 
-        <button
-          id="rulesButton"
-          className="w3-button rulesHide"
-          style={{ marginTop: "5px", width: "100px", borderRadius: "12px" }}
-          onClick={() => { this.closeRulesDialog(1, true); document.getElementById("rulesButton").className = "w3-button rulesPressed" }} >
-          <span style={{ float: "left" }}>rules</span>
-        </button>
-
-        <h3 style={{
-          paddingBottom: "3px",
-          borderLeft: "4px solid " + this.currentColor,
-          backgroundColor: "light" + (this.currentColor === "red" ? "coral" : this.currentColor)
-        }}> &nbsp;Play Pile: </h3>
-        <PlayPile playPile={this.repo.playPile} turnCount={this.turnCount} />
-
-        {this.renderHands()}
+        <PlayArea
+          repo={this.repo}
+          hideComputers={this.hideComputers}
+          currentPlayer={this.currentPlayer}
+          currentColor={this.currentColor}
+          turnCount={this.turnCount}
+          turnPlayer={this.turnPlayer} />
 
         <Dialogs
           colorOpen={this.colorOpen}
