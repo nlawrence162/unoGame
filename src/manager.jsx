@@ -210,7 +210,8 @@ class Game extends React.Component {
   }
   removePlayer = (index) => {
     var currentPlayer = this.repo.players[this.currentPlayer];
-    for (let i = 0; i < this.repo.players[index].hand.length; i++)
+    const len = this.repo.players[index].hand.length;
+    for (let i = 0; i < len; i++)
       this.repo.deck.push(this.repo.players[index].hand.pop());
     this.repo.players.splice(index, 1);
     this.repo.shuffle();
