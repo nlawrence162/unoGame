@@ -7,10 +7,10 @@ class Player {
   plays = 0;
 
   constructor() {
-    var first = ["Ron", "Iggy", "Kronk", "Ally", "Flatty", "Winter", "Freakin", "Boy", "Leaky", "Shelly","Joane", "Flying", "Bob", "Regular", "Ilievin", 
-    "Texas", "Big", "Mr.", "Fruit", "Squish", "Syck", "Rich","Symour", "Prince", "River", "Green", "Oboe", "Wonder", "Dilly", "Christopher", "Dr.", "Italian"];
-    var last = ["Gaytor", "Breadwater", "Pound", "Hydroblast", "Kirkcen", "Kilometere", "Man", "Floorboard", "Skeleton", "Pumpkinhead", "Jones", "Aeroplayne", "Jack", 
-    "Kanada", "Indiana", "Texas", "Chungus", "Squash", "Beatz", "Flute", "Bourbon", "Mahogany","Jungle", "Field", "Pickle", "Swanson", "Windhead", "Alfredo", "Swiper"];
+    var first = ["Ron", "Iggy", "Kronk", "Ally", "Flatty", "Winter", "Freakin", "Boy", "Leaky", "Shelly", "Joane", "Flying", "Bob", "Regular", "Ilievin",
+      "Texas", "Big", "Mr.", "Fruit", "Squish", "Syck", "Rich", "Symour", "Prince", "River", "Green", "Oboe", "Wonder", "Dilly", "Christopher", "Dr.", "Italian"];
+    var last = ["Gaytor", "Breadwater", "Pound", "Hydroblast", "Kirkcen", "Kilometere", "Man", "Floorboard", "Skeleton", "Pumpkinhead", "Jones", "Aeroplayne", "Jack",
+      "Kanada", "Indiana", "Texas", "Chungus", "Squash", "Beatz", "Flute", "Bourbon", "Mahogany", "Jungle", "Field", "Pickle", "Swanson", "Windhead", "Alfredo", "Swiper"];
     var middle = [" Fetuccine ", " 'The Rock' ", " Von ", " O' "];
     this.name = first[Math.floor(Math.random() * first.length)]
       + (Math.random() > 0.05 ? " " : middle[Math.floor(Math.random() * middle.length)])
@@ -30,7 +30,7 @@ class Player {
     var currentCardObj = { card: this.hand[0], rank: 6 };
 
     for (let i = 0; i < this.hand.length; i++) {
-      var validatedObj = Player.validatePlay(pileCard, this.hand[i]);
+      var validatedObj = this.validatePlayRank(pileCard, this.hand[i]);
       if (validatedObj.play && validatedObj.rank < currentCardObj.rank) {
         currentCardObj = { card: this.hand[i], rank: validatedObj.rank };
       }
@@ -41,7 +41,7 @@ class Player {
 
     //wild cards choose color
     if (pileCard.type === "wild" || pileCard.type === "wild_picker")
-      pileCard.color = Player.getBestColor(this.hand);
+      pileCard.color = this.getBestColor(this.hand);
 
     return { isPlayed: true, card: pileCard };
   }
@@ -49,11 +49,11 @@ class Player {
   //Checks each card in this players hand against the top card of the play pile.
   playPossible(pileCard) {
     for (let i = 0; i < this.hand.length; i++)
-      if (Player.validatePlay(pileCard, this.hand[i]).play) return true;
+      if (Player.validatePlay(pileCard, this.hand[i])) return true;
     return false;
   }
 
-  static validatePlay(pileCard, playCard) {
+  validatePlayRank(pileCard, playCard) {
     if (pileCard.color === "black") return { play: true, rank: 0 };//So that when you are chosing a color, it dosn't prompt you to draw a card.
     var rank = 0;
 
@@ -73,7 +73,19 @@ class Player {
     else return { play: true, rank: rank };
   }
 
-  static getBestColor(hand) {
+  static validatePlay(pileCard, playCard) {
+    if (playCard.color === "black" || pileCard.color === "black") return true;
+    if (playCard.color === pileCard.color) return true;
+    if (playCard.number !== -1) {
+      if (playCard.number === pileCard.number) return true;
+    } else {
+      if (playCard.type === pileCard.type) return true;
+    }
+
+    return false;
+  }
+
+  getBestColor(hand) {
     var color = "red";
     var colors = { red: 0, yellow: 0, green: 0, blue: 0 };
 

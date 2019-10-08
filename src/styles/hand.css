@@ -23,3 +23,54 @@
 .black:hover {
     box-shadow: inset 0 0 50px 5px rgb(70, 38, 65), 0 0 50px 5px rgb(70, 38, 65);
 }
+
+.delete {
+  transform: translateY(-2px);
+  margin: 0px 5px;
+  border: none;
+  background-color: #FFF;
+  transition: all 0.5s;
+  border-right: 1px solid #FFF;
+  border-top:1px solid #FFF;
+  border-bottom:1px solid #FFF;
+}
+
+.delete:hover{
+  border-right: 1px solid grey;
+  border-top:1px solid grey;
+  border-bottom:1px solid grey;
+}
+
+.delete i{
+  transition: all 0.5s;
+  transform: translateY(1px);
+}
+
+.delete:hover i{
+  transform: translateX(-4px) translateY(-1px) rotate(-180deg);
+}
+
+.delete span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+.delete span:after {
+    content: 'Delete';
+    position: absolute;
+    opacity: 0;
+    top: -17px;
+    right: 40px;
+    transition: 0.5s;
+  }
+
+.delete:hover span {
+    padding-left: 55px;
+}
+
+.delete:hover span:after {
+    opacity: 1;
+    right: 8px;
+  }

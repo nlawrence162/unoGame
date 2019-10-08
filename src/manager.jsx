@@ -77,18 +77,18 @@ class Game extends React.Component {
         this.colorOpen = true;//Opens the color selection menu for wild cards.
         this.forceUpdate();
       }
-      //Now that card has been fully played. Destroy this boi.
-      this.removeWinningPlayer(player);
 
       //set current color to color of top playPile card
       this.currentColor = this.repo.playPile[this.repo.playPile.length - 1].color;//Used for the draw pile backround color
 
-      //Next player
-      if (this.skip) {
+      if (!this.removeWinningPlayer(player)) {
+        //Next player
+        if (this.skip) {
+          this.currentPlayer = this.nextPlayer()
+          this.skip = false;
+        }
         this.currentPlayer = this.nextPlayer()
-        this.skip = false;
       }
-      this.currentPlayer = this.nextPlayer()
 
       this.forceDrawPlayer();
     }
@@ -121,8 +121,6 @@ class Game extends React.Component {
     player.plays++;
     var playedCard = this.repo.doAPlayAI(this.repo.players.indexOf(player));
 
-    this.removeWinningPlayer(player);
-
     if (playedCard !== null) {
       //Reverse
       if (playedCard.type === "reverse") {
@@ -144,12 +142,14 @@ class Game extends React.Component {
     //set current color to color of top playPile card
     this.currentColor = this.repo.playPile[this.repo.playPile.length - 1].color;
 
-    //All actions are done. Move to next player.
-    if (this.skip) {
+    if (!this.removeWinningPlayer(player)) {
+      //All actions are done. Move to next player.
+      if (this.skip) {
+        this.currentPlayer = this.nextPlayer()
+        this.skip = false;
+      }
       this.currentPlayer = this.nextPlayer()
-      this.skip = false;
     }
-    this.currentPlayer = this.nextPlayer()
 
     //Force draw next player
     this.forceDrawPlayer();
@@ -179,13 +179,10 @@ class Game extends React.Component {
     if (player.hand.length === 0) {
       this.winningMessage = player.name + " has won in " + player.plays + " turns!";//Set the winning message.
       this.winnerOpen = true;//Set the message to open
-      this.repo.players.splice(this.repo.players.indexOf(player), 1);//Remove the player
-      this.forceUpdate();
-      //adjust current player
-      this.currentPlayer += this.reversed ? 0 : 1;
-      if (this.currentPlayer > this.repo.players.length - 1)
-        this.currentPlayer = 0;
+      this.removePlayer(this.repo.players.indexOf(player));//Remove the player
+      return true;
     }
+    return false;
   }
   forceDrawPlayer() {
     while (this.forceDraw > 0) {
@@ -210,6 +207,25 @@ class Game extends React.Component {
       this.repo.players[this.repo.players.length - 1].computer = false;
       this.forceUpdate();
     }
+  }
+  removePlayer = (index) => {
+    var currentPlayer = this.repo.players[this.currentPlayer];
+    for (let i = 0; i < this.repo.players[index].hand.length; i++)
+      this.repo.deck.push(this.repo.players[index].hand.pop());
+    this.repo.players.splice(index, 1);
+    this.repo.shuffle();
+
+    //adjust current player
+    if (this.repo.players.length !== 0) {
+      if (this.currentPlayer === index)
+        this.currentPlayer += this.reversed ? -1 : 0;
+      else
+        this.currentPlayer = this.repo.players.indexOf(currentPlayer);
+      if (this.currentPlayer < 0) this.currentPlayer = this.repo.players.length - 1; //Bottom boundry
+      if (this.currentPlayer > this.repo.players.length - 1) this.currentPlayer = 0; //Top boundry
+    }
+
+    this.forceUpdate();
   }
 
   //Dialog actions
@@ -350,7 +366,8 @@ class Game extends React.Component {
           currentPlayer={this.currentPlayer}
           currentColor={this.currentColor}
           turnCount={this.turnCount}
-          turnPlayer={this.turnPlayer} />
+          turnPlayer={this.turnPlayer}
+          removePlayer={this.removePlayer} />
 
         <Dialogs
           colorOpen={this.colorOpen}

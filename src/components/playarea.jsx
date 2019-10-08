@@ -31,27 +31,36 @@ class PlayArea extends React.Component {
 
   renderPlayerHand(i) {
     let hand = [];
-    hand.push(React.createElement("h3", { key: i + this.props.repo.players.length }, this.props.repo.players[i].name + "'s hand:"));
-    hand.push(React.createElement(Hand, {
-      player: this.props.repo.players[i],
-      cardSetter: this.props.turnPlayer,
-      canPlay: this.props.repo.players[i].playPossible(this.props.repo.playPile[this.props.repo.playPile.length - 1]),
-      key: i
-    }));
-    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px blue", borderStyle: "double none", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
+    hand.push(
+      <div key={i}>
+        <div>
+          <button className="delete" onClick={() => this.props.removePlayer(i)}><span></span><i className="glyphicon glyphicon-remove" /></button>
+          <h3 style={{ display: "inline-block" }} > {this.props.repo.players[i].name + "'s hand:"}</h3>
+        </div>
+        <Hand player={this.props.repo.players[i]}
+          cardSetter={this.props.turnPlayer}
+          canPlay={this.props.repo.players[i].playPossible(this.props.repo.playPile[this.props.repo.playPile.length - 1])} />
+      </div>);
+    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px blue", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
   }
 
   renderStaticHand(i) {
     let hand = [];
     if (!this.props.repo.players[i].computer || !this.props.hideComputers) {
-      hand.push(<h3 key={i + this.props.repo.players.length}>{this.props.repo.players[i].name + "'s hand:"}</h3>);
-      hand.push(<Hand player={this.props.repo.players[i]} key={i} />);
+      hand.push(
+        <div key={i}>
+          <div>
+            <button className="delete" onClick={() => this.props.removePlayer(i)} ><span></span> <i className="glyphicon glyphicon-remove" /></button>
+            <h3 style={{ display: "inline-block" }}>{this.props.repo.players[i].name + "'s hand:"}</h3>
+          </div>
+          <Hand player={this.props.repo.players[i]} />
+        </div>);
     }
     else {
       var msg = this.props.repo.players[i].name + " (" + this.props.repo.players[i].hand.length + (this.props.repo.players[i].hand.length === 1 ? " Card Hidden)" : " Cards Hidden)");
       hand.push(React.createElement("h3", { key: i + this.props.repo.players.length }, msg));
     }
-    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px coral", borderStyle: "double none", borderRadius: "10px", padding: "3px" } : { padding: "6px 3px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px coral", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "3px" } : { padding: "6px 3px" } }, hand);
   }
 
   render() {

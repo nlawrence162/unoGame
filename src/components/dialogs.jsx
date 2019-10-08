@@ -35,7 +35,7 @@ class Dialogs extends React.Component {
             <DialogContentText id="rulz2">
               <span style={{ fontStyle: "italic" }}>Wikipedia dosn't know what they're talking about:</span><br /><br />
               - Drawing cards will not end your turn. You can still play after you are forced to draw cards.<br /><br />
-              - Winning doesn't end the game. You simply reuse the remaining cards by adding players and computers at any time.<br /><br />
+              - Winning doesn't end the game. You simply reuse the remaining cards by adding players or computers at any time.<br /><br />
               - Shouting "UNO" won't do you any good in this game.
                             This is because robots tend to have faster reaction times than humans do.<br /><br />
               - When a player reaches zero cards, they get thanos snapped.
@@ -61,7 +61,7 @@ class Dialogs extends React.Component {
               <span style={{ fontStyle: "italic" }}>The best way to learn the game is by clicking around and observing
                   the results, but if you would like some pointers, here they are:</span><br /><br />
               - By default, there is one player. You choose which cards they play.
-                  You add oponents and other players at will. But you cannot remove them.<br /><br />
+                  You add or remove oponents and other players at will.<br /><br />
               - Every player is shown on the screen, this can be disabled.
                   A computer player is represented by a <span style={{ color: "coral" }}>red</span> border.
                   A player is represented by a <span style={{ color: "MediumTurquoise " }}>blue</span> border.

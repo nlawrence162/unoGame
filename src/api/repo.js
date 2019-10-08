@@ -58,7 +58,7 @@ class Repo {
   }
 
   validatePlay(a, b) {
-    return Player.validatePlay(a, b).play;
+    return Player.validatePlay(a, b);
   }
 
   playerExists() {
@@ -74,13 +74,11 @@ class Repo {
     this.shuffle();
     this.playPile.push(this.deck.pop()); //Take one off the top
 
-    /*
     //Make sure its a regular card to avoid first turn madness
     while (this.playPile[this.playPile.length - 1].type !== "") {
       this.deck.unshift(this.playPile.shift());//Put it back
       this.playPile.push(this.deck.pop());//Grab a new one
     }
-    */
 
     //Add a non-computer player
     this.addPlayer();
