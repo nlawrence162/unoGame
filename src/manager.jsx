@@ -59,8 +59,6 @@ class Game extends React.Component {
     this.setState(newState);
   }
 
-
-
   //Play actions
   addAI = () => {
     var repo = this.state.repo;
@@ -152,19 +150,20 @@ class Game extends React.Component {
     this.setState({ winnerOpen: false });
   }
   closeColorDialog = color => {
-    var colorOpen = this.state.colorOpen;
-    var currentColor = this.state.currentColor;
-    var repo = this.state.repo;
-    if (colorOpen) {
-      colorOpen = false;
-      currentColor = color;
-      repo.playPile[repo.playPile.length - 1].color = currentColor;
-      this.setState({ colorOpen: colorOpen, currentColor: currentColor, repo: repo });
+    var state = this.state;
+    if (state.colorOpen) {
+      state.colorOpen = false;
+      state.currentColor = color;
+      state.repo.playPile[state.repo.playPile.length - 1].color = state.currentColor;
 
-      if (this.state.autoPlayAI === true && repo.players[this.state.currentPlayer].computer === true) {
-        this.turnAI();
+      if (state.autoPlayAI === true && state.repo.players[state.currentPlayer].computer === true) {
+        var newState = Logic.turnAI(state);
+        this.setState(newState);
+      } else {
+        this.setState({ colorOpen: state.colorOpen, currentColor: state.currentColor, repo: state.repo });
       }
     }
+
   }
   toggleHelpDialog = () => {
     if (this.optionsOpen) {
