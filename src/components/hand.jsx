@@ -12,7 +12,9 @@ class Hand extends React.Component {
           React.createElement(Card, {
             className: "card",
             card: this.props.player.hand[i],
-            cardSetter: this.props.cardSetter,
+            handleCardClick: this.props.handleCardClick,
+            handleCardDown: this.props.handleCardDown,
+            handleCardUp: this.props.handleCardUp,
             key: i
           })
         );
@@ -23,7 +25,9 @@ class Hand extends React.Component {
         React.createElement(Card, {
           className: "card",
           card: "card_back_alt",
-          cardSetter: this.props.cardSetter,
+          handleCardClick: this.props.handleCardClick,
+          handleCardDown: this.props.handleCardDown,
+          handleCardUp: this.props.handleCardUp,
           key: -1
         })
       );

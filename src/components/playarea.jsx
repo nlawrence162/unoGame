@@ -38,7 +38,9 @@ class PlayArea extends React.Component {
           <h3 style={{ display: "inline-block" }} > {this.props.repo.players[i].name + "'s hand:"}</h3>
         </div>
         <Hand player={this.props.repo.players[i]}
-          cardSetter={this.props.turnPlayer}
+          handleCardClick={this.props.handleCardClick}
+          handleCardDown={this.props.handleCardDown}
+          handleCardUp={this.props.handleCardUp}
           canPlay={this.props.repo.players[i].playPossible(this.props.repo.playPile[this.props.repo.playPile.length - 1])} />
       </div>);
     return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px blue", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
@@ -70,7 +72,7 @@ class PlayArea extends React.Component {
         borderLeft: "4px solid " + this.props.currentColor,
         backgroundColor: "light" + (this.props.currentColor === "red" ? "coral" : this.props.currentColor)
       }}> &nbsp;Play Pile: </h3>
-      <PlayPile playPile={this.props.repo.playPile} turnCount={this.props.turnCount} />
+      <PlayPile playPile={this.props.repo.playPile} snakeIteration={this.props.snakeIteration} />
 
       {this.renderHands()}
     </div>);
