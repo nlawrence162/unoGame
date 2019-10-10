@@ -59,8 +59,10 @@ class PlayArea extends React.Component {
         </div>);
     }
     else {
-      var msg = this.props.repo.players[i].name + " (" + this.props.repo.players[i].hand.length + (this.props.repo.players[i].hand.length === 1 ? " Card Hidden)" : " Cards Hidden)");
-      hand.push(React.createElement("h3", { key: i + this.props.repo.players.length }, msg));
+      hand.push(<div key={i + this.props.repo.players.length}>
+        <button className="delete" onClick={() => this.props.removePlayer(i)} ><span></span> <i className="glyphicon glyphicon-remove" /></button>
+        <h3 style={{ display: "inline-block" }}>{this.props.repo.players[i].name + " (" + this.props.repo.players[i].hand.length + (this.props.repo.players[i].hand.length === 1 ? " Card Hidden)" : " Cards Hidden)")}</h3>
+      </div>);
     }
     return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px coral", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "3px" } : { padding: "6px 3px" } }, hand);
   }
