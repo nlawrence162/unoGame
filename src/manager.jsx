@@ -75,7 +75,7 @@ class Game extends React.Component {
     if (repo.deck.length <= 7) repo.updateDeck();
     if (repo.deck.length > 7) {
       repo.addPlayer();
-      repo.players[this.repo.players.length - 1].computer = false;
+      repo.players[repo.players.length - 1].computer = false;
     }
     this.setState({ repo: repo });
   }
