@@ -46,12 +46,13 @@ class Game extends React.Component {
 
     //On right arrow key press
     window.onkeydown = (e) => {
-      if (e.keyCode === 39 && !this.colorOpen && !this.winnerOpen) {
+      if (e.keyCode === 39 && !this.state.colorOpen && !this.state.winnerOpen) {
         this.turnAI();
       }
     }
   }
 
+  //Passes control and state down to a logic api in order to consolidate ideas.
   turnPlayer = card => {
     var newState = Logic.turnPlayer(card, this.state);
     this.setState(newState);
