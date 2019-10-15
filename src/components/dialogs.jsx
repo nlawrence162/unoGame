@@ -17,10 +17,10 @@ class Dialogs extends React.Component {
           onClose={() => this.props.closeRulesDialog(1, false)}
           aria-labelledby="rules1"
         >
-          <DialogTitle id="rules1">Welcome to my uno.</DialogTitle>
+          <DialogTitle id="rules1"><span style={{ fontSize: "130%" }}>Welcome to my uno.</span></DialogTitle>
           <DialogActions>
-            <Button onClick={() => this.props.closeRulesDialog(1, true)} color="primary">Rules?</Button>
-            <Button onClick={() => this.props.closeRulesDialog(1, false)} color="primary">Eh, whatever.</Button>
+            <Button onClick={() => this.props.closeRulesDialog(1, true)} color="primary"><span style={{ fontSize: "120%" }}>Rules?</span></Button>
+            <Button onClick={() => this.props.closeRulesDialog(1, false)} color="primary"><span style={{ fontSize: "120%" }}>Eh, whatever.</span></Button>
           </DialogActions>
         </Dialog>
 
@@ -30,7 +30,7 @@ class Dialogs extends React.Component {
           aria-labelledby="rules2"
           aria-describedby="rulz2"
         >
-          <DialogTitle id="rules2">Okay, here it is:</DialogTitle>
+          <DialogTitle id="rules2"><span style={{ fontSize: "130%" }}>Okay, here it is:</span></DialogTitle>
           <DialogContent>
             <DialogContentText id="rulz2" style={{ fontSize: "110%" }}>
               <span style={{ fontStyle: "italic" }}>Wikipedia dosn't know what they're talking about:</span><br /><br />
@@ -44,8 +44,8 @@ class Dialogs extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => this.props.closeRulesDialog(2, true)} color="primary">wait, but like, what do I do?</Button>
-            <Button onClick={() => this.props.closeRulesDialog(2, false)} color="primary" autoFocus>Nice.</Button>
+            <Button onClick={() => this.props.closeRulesDialog(2, true)} color="primary"><span style={{ fontSize: "120%" }}>wait, but like, what do I do?</span></Button>
+            <Button onClick={() => this.props.closeRulesDialog(2, false)} color="primary" autoFocus><span style={{ fontSize: "120%" }}>Nice.</span></Button>
           </DialogActions>
         </Dialog>
 
@@ -55,7 +55,7 @@ class Dialogs extends React.Component {
           aria-labelledby="rules3"
           aria-describedby="rulz3"
         >
-          <DialogTitle id="rules3">Instructions:</DialogTitle>
+          <DialogTitle id="rules3"><span style={{ fontSize: "130%" }}>Instructions:</span></DialogTitle>
           <DialogContent>
             <DialogContentText id="rulz3" style={{ fontSize: "110%" }}>
               <span style={{ fontStyle: "italic" }}>The best way to learn the game is by clicking around and observing
@@ -72,7 +72,7 @@ class Dialogs extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => this.props.closeRulesDialog(3)} color="primary">Alright, let me play.</Button>
+            <Button onClick={() => this.props.closeRulesDialog(3)} color="primary"><span style={{ fontSize: "120%" }}>Alright, let me play.</span></Button>
           </DialogActions>
         </Dialog>
       </div >
@@ -87,11 +87,11 @@ class Dialogs extends React.Component {
           onClose={this.props.closeWinDialog}
           aria-labelledby="winner_msg"
         >
-          <DialogTitle id="winner_msg">{this.props.winningMessage}</DialogTitle>
+          <DialogTitle id="winner_msg"><span style={{ fontSize: "130%" }}>{this.props.winningMessage}</span></DialogTitle>
           <DialogActions>
-            <Button onClick={this.props.closeWinDialog} color="primary" style={{ height: '70px', width: '75px' }}>
-              k.
-                </Button>
+            <Button onClick={this.props.closeWinDialog} color="primary">
+              <span style={{ fontSize: "120%" }}>k.</span>
+            </Button>
           </DialogActions>
         </Dialog>
       </div>
@@ -108,12 +108,12 @@ class Dialogs extends React.Component {
           onClose={this.props.closeColorDialog}
           aria-labelledby="color_picker"
         >
-          <DialogTitle id="color_pickercolor_picker">{"Pick a color: "}</DialogTitle>
+          <DialogTitle id="color_pickercolor_picker"><span style={{ fontSize: "130%" }}>Pick a color:</span></DialogTitle>
           <DialogActions>
-            <Button onClick={() => this.props.closeColorDialog("red")} style={{ backgroundColor: "lightcoral" }}>Red</Button>
-            <Button onClick={() => this.props.closeColorDialog("yellow")} style={{ backgroundColor: "lightyellow" }}>Yellow</Button>
-            <Button onClick={() => this.props.closeColorDialog("green")} style={{ backgroundColor: "lightgreen" }}>Green</Button>
-            <Button onClick={() => this.props.closeColorDialog("blue")} style={{ backgroundColor: "lightblue" }}>Blue</Button>
+            <Button onClick={() => this.props.closeColorDialog("red")} style={{ backgroundColor: "lightcoral" }}><span style={{ fontSize: "120%" }}>Red</span></Button>
+            <Button onClick={() => this.props.closeColorDialog("yellow")} style={{ backgroundColor: "lightyellow" }}><span style={{ fontSize: "120%" }}>Yellow</span></Button>
+            <Button onClick={() => this.props.closeColorDialog("green")} style={{ backgroundColor: "lightgreen" }}><span style={{ fontSize: "120%" }}>Green</span></Button>
+            <Button onClick={() => this.props.closeColorDialog("blue")} style={{ backgroundColor: "lightblue" }}><span style={{ fontSize: "120%" }}>Blue</span></Button>
           </DialogActions>
         </Dialog>
       </div>
@@ -128,7 +128,7 @@ class Dialogs extends React.Component {
         aria-labelledby="help"
         aria-describedby="halp"
       >
-        <DialogTitle id="help">Like, what even are these options?</DialogTitle>
+        <DialogTitle id="help"><span style={{ fontSize: "130%" }}>Like, what even are these options?</span></DialogTitle>
         <DialogContent>
           <DialogContentText id="halp" style={{ fontSize: "110%" }}>
             <span style={{ fontStyle: "italic", fontWeight: "bold" }}>Autoplay</span>: When the "advance one turn" button is clicked, it will
@@ -142,7 +142,7 @@ class Dialogs extends React.Component {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.props.toggleHelpDialog} color="primary">Thanks, bro.</Button>
+          <Button onClick={this.props.toggleHelpDialog} color="primary"><span style={{ fontSize: "120%" }}>Thanks, bro.</span></Button>
         </DialogActions>
       </Dialog>
     );
