@@ -38,7 +38,10 @@ class Game extends React.Component {
       rules1Open: true,
       rules2Open: false,
       rules3Open: false,
-      helpOpen: false
+      helpOpen: false,
+
+      //delete
+      deleteIterable: 0
     };
 
     //On right arrow key press
@@ -177,9 +180,6 @@ class Game extends React.Component {
         break;
       case 3:
         this.setState({ hideComputers: !this.state.hideComputers });
-        break;
-      case 4:
-        this.setState({ dragCards: !this.state.dragCards });
         break;
       default:
         break;

@@ -20,7 +20,6 @@ class Controls extends React.Component {
           <button className={this.props.autoPlayAI ? "opbutton" : "obutton"} onClick={() => this.props.toggleOption(1)}>Autoplay</button>
           <button className={this.props.hideComputers ? "opbutton" : "obutton"} onClick={() => this.props.toggleOption(3)}>Hide AI</button>
           <button className={this.props.stopOnPlayer ? "opbutton" : "obutton"} onClick={() => this.props.toggleOption(2)}>No Skip</button>
-          <button className={this.props.dragCards ? "opbutton" : "obutton"} onClick={() => this.props.toggleOption(4)}>Drag</button>
           <button className={"obutton help"} onClick={this.props.toggleHelpDialog}><div><div>?</div></div></button>
           <div id="whiteBox" className={this.props.optionsOpen ? "whitebox squish" : "whitebox"}></div>
         </div>
