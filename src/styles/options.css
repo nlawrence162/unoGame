@@ -1,35 +1,52 @@
-.obutton, .opbutton {
+/*Global*/
+.obutton, .opbutton, .cog, .cogspin{
     height: 45px;
-    transition: all 0.2s;
-    background-color: #fcfcfc !important;
-  }
-
-  .opbutton {
-    background-color: #b6c4d4 !important;
-  }
-
-/*Gear Icon*/
-.cog i, .cogspin i{
-    transform: translate(-1px,1px);
-    transition: all 0.2s;
 }
-.cog:hover i{
-    transform: translate(-1px,1px) rotate(-45deg);
+
+/*Options*/
+.obutton, .opbutton {
+    transition: all 0.2s;
+    background-color: #fcfcfc;
+    border: none;
+    transform: translateY(-1px);
+    padding: 0px 10px;
+  }
+.opbutton {
+    background-color: #b6c4d4;
 }
-.cogspin i{
-    animation: spin .8s linear 0s infinite;
+
+.obutton:hover{
+    background-color: #d8d8d8;
+}
+.opbutton:hover{
+    background-color: #93a0ad;
 }
 
 /*Options button*/
 .cog, .cogspin {
     width: 50px;
-    height: 45px;
-    background-color: #fff !important;
+    border: none;
+    background-color: #fff;
 }
 .cogspin{
-    background-color: #fcfcfc  !important;
+    background-color: #fcfcfc;
 }
 
+/*Gear Icon*/
+.cog i, .cogspin i{
+    font-size: 18px;
+    left: -1px;
+    top: 2px;
+    transition: all 0.2s;
+}
+.cog:hover i{
+    transform: rotate(-45deg);
+}
+.cogspin i{
+    animation: spin .8s linear 0s infinite;
+}
+
+/*Acordion*/
 .whitebox {
     display: inline-block;
     transition: transform .3s;
@@ -39,7 +56,6 @@
     height: 45px;
     width: 316px;
     background-color: #fff;
-    z-index: 1;
   }
 
 .squish {
@@ -47,14 +63,19 @@
     transform-origin: right;
 }
 
-.wiggle:hover div{
+/*Help Button*/
+.help{
+    padding: 0px 15px;
+}
+
+.help:hover div{
     animation-name: wiggle;
     animation-duration: .8s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(.89,.38,.16,.74);
 }
 
-.wiggle:hover div div{
+.help:hover div div{
     animation-name: float;
     animation-duration: 3.5s;
     animation-iteration-count: infinite;
@@ -74,6 +95,6 @@
 }
 
 @keyframes spin{
-    from {transform: translate(-1px,1px) rotate(0deg);}
-    to {transform: translate(-1px,1px) rotate(-45deg);}
+    from {transform: rotate(0deg);}
+    to {transform: rotate(-45deg);}
 }

@@ -1,10 +1,16 @@
 .turnButton, .addAIButton, .addPlayerButton {
+  background: none;
   border: none;
   text-align: center;
   transition: all 0.5s;
   cursor: pointer;
   /*variable width*/
   height: 40px;
+  overflow: hidden;
+}
+
+.turnButton:hover, .addAIButton:hover, .addPlayerButton:hover {
+  background-color: lightgrey;
 }
 
 .turnButton span,.addAIButton span,.addPlayerButton span {

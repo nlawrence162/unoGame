@@ -100,7 +100,6 @@ class Logic {
     //Autoplay
     if (state.colorOpen === false && state.autoPlayAI === true && state.repo.players[state.currentPlayer].computer === true) {
       state = this.turnAI(state);
-      console.log("Auto played");
     }
 
     return state;
@@ -193,7 +192,6 @@ class Logic {
 
     if (state.autoPlayAI === true && state.repo.players[state.currentPlayer].computer === true) {
       state = this.turnAI(state);
-      console.log("Auto played");
     }
 
     return state;

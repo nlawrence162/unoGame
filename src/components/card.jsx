@@ -22,15 +22,13 @@ class Card extends React.Component {
     return (
       <img
         onClick={this.props.handleCardClick !== undefined ? () => { this.props.handleCardClick(this.props.card); } : undefined}
-        onMouseDown={this.props.handleCardDown !== undefined ? () => { this.props.handleCardDown(this.props.card); } : undefined}
-        onMouseUp={this.props.handleCardUp !== undefined ? () => { this.props.handleCardUp(this.props.card); } : undefined}
 
         src={this.getImg(this.props.card)}//Sets image using card object
         alt="card"//Required
         draggable="false"//Made so that the player dosn't drag instead of click a card.
 
         style={this.props.style === undefined ? { margin: "2px", height: "100px" } : this.props.style}//Sets style to regular, or playpile style.
-        className={this.props.noAni !== true ? this.props.handleCardClick !== undefined ? "w3-animate-left card " + this.props.card.color : "w3-animate-left" : ""}
+        className={this.props.noAni !== true ? this.props.handleCardClick !== undefined ? "animateLeft card " + this.props.card.color : "animateLeft" : ""}
       />
     );
   }

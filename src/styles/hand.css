@@ -47,7 +47,7 @@
 }
 
 .delete:hover i{
-  transform: translateX(-4px) translateY(-1px) rotate(-180deg);
+  transform: translateX(-3px) translateY(1px) rotate(-180deg);
 }
 
 .delete span {
@@ -74,3 +74,12 @@
     opacity: 1;
     right: 8px;
   }
+
+.animateLeft{
+  animation: fadeLeft .3s;
+}
+
+@keyframes fadeLeft{
+  from{transform: translateX(-20px) rotate(-15deg) scale(1.1); opacity: 0;}
+  to{opacity: 1;}
+}

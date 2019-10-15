@@ -13,8 +13,6 @@ class Hand extends React.Component {
             className: "card",
             card: this.props.player.hand[i],
             handleCardClick: this.props.handleCardClick,
-            handleCardDown: this.props.handleCardDown,
-            handleCardUp: this.props.handleCardUp,
             key: i
           })
         );
@@ -26,8 +24,6 @@ class Hand extends React.Component {
           className: "card",
           card: "card_back_alt",
           handleCardClick: this.props.handleCardClick,
-          handleCardDown: this.props.handleCardDown,
-          handleCardUp: this.props.handleCardUp,
           key: -1
         })
       );

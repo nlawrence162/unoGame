@@ -32,14 +32,14 @@ class Dialogs extends React.Component {
         >
           <DialogTitle id="rules2">Okay, here it is:</DialogTitle>
           <DialogContent>
-            <DialogContentText id="rulz2">
+            <DialogContentText id="rulz2" style={{ fontSize: "110%" }}>
               <span style={{ fontStyle: "italic" }}>Wikipedia dosn't know what they're talking about:</span><br /><br />
               - Drawing cards will not end your turn. You can still play after you are forced to draw cards.<br /><br />
               - Winning doesn't end the game. You simply reuse the remaining cards by adding players or computers at any time.<br /><br />
               - Shouting "UNO" won't do you any good in this game.
-                            This is because robots tend to have faster reaction times than humans do.<br /><br />
+                  This is because robots tend to have faster reaction times than humans do.<br /><br />
               - When a player reaches zero cards, they get thanos snapped.
-                            A message will appear declaring their victory.<br /><br />
+                  A message will appear declaring their victory.<br /><br />
               - Other than that. <a href="https://www.unorules.com/" style={{ color: "#647a9e" }}>Normal uno rules.</a>
             </DialogContentText>
           </DialogContent>
@@ -57,7 +57,7 @@ class Dialogs extends React.Component {
         >
           <DialogTitle id="rules3">Instructions:</DialogTitle>
           <DialogContent>
-            <DialogContentText id="rulz3">
+            <DialogContentText id="rulz3" style={{ fontSize: "110%" }}>
               <span style={{ fontStyle: "italic" }}>The best way to learn the game is by clicking around and observing
                   the results, but if you would like some pointers, here they are:</span><br /><br />
               - By default, there is one player. You choose which cards they play.
@@ -130,7 +130,7 @@ class Dialogs extends React.Component {
       >
         <DialogTitle id="help">Like, what even are these options?</DialogTitle>
         <DialogContent>
-          <DialogContentText id="halp">
+          <DialogContentText id="halp" style={{ fontSize: "110%" }}>
             <span style={{ fontStyle: "italic", fontWeight: "bold" }}>Autoplay</span>: When the "advance one turn" button is clicked, it will
                 automatically play every <span style={{ color: "coral" }}>AI turn</span> and stop at the next <span style={{ color: "MediumTurquoise " }}>player</span>.
                 Reverse, Skip, and Draw cards are still calculated during these turns.<br /><br />

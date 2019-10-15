@@ -1,14 +1,17 @@
 .rules, .rulesHide, .rulesPressed{
     position: fixed;
+    border: none;
     top: 0px;
     right: 0px;
-    background-color: #85bbf5 !important;
-    color: white !important;
-    transform: translateX(35px);
+    background-color: #85bbf5;
+    color: white;
+    transform: translateX(40px);
     transition: 0.5s;
+    padding: 5px 15px;
   }
   .rules:hover{
-    transform: translateX(15px);
+    transform: translateX(30px);
+    background-color: #90cfec;
   }
 
   .rulesHide{
@@ -16,7 +19,7 @@
   }
 
   .rulesPressed{
-    background-color: #bdbfc0 !important;
-    color: black !important;
-    transform: translateX(15px);
+    background-color: #bdbfc0;
+    color: black;
+    transform: translateX(20px);
   }

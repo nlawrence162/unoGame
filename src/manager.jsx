@@ -27,7 +27,6 @@ class Game extends React.Component {
       autoPlayAI: false,
       stopOnPlayer: false,
       hideComputers: false,
-      dragCards: true,
 
       //snakedata
       snakeIteration: 0,
@@ -102,12 +101,6 @@ class Game extends React.Component {
   handleCardClick = card => {
     this.turnPlayer(card);
   }
-  handleCardDown = card => {
-
-  }
-  handleCardUp = card => {
-
-  }
 
   //Dialog actions
   closeRulesDialog = (value, next) => {
@@ -121,7 +114,7 @@ class Game extends React.Component {
           rules2Open = true;
         }
         else {
-          document.getElementById("rulesButton").className = "w3-button rules"
+          document.getElementById("rulesButton").className = "rules"
         }
         rules1Open = false;
         break;
@@ -131,14 +124,14 @@ class Game extends React.Component {
           rules3Open = true;
         }
         else {
-          document.getElementById("rulesButton").className = "w3-button rules"
+          document.getElementById("rulesButton").className = "rules"
         }
         rules2Open = false;
         break;
 
       case 3:
         rules3Open = false;
-        document.getElementById("rulesButton").className = "w3-button rules"
+        document.getElementById("rulesButton").className = "rules"
         break;
 
       default:
@@ -163,10 +156,9 @@ class Game extends React.Component {
         this.setState({ colorOpen: state.colorOpen, currentColor: state.currentColor, repo: state.repo });
       }
     }
-
   }
   toggleHelpDialog = () => {
-    if (this.optionsOpen) {
+    if (this.state.optionsOpen) {
       this.setState({ helpOpen: !this.state.helpOpen });
     }
   }
@@ -186,6 +178,9 @@ class Game extends React.Component {
       case 3:
         this.setState({ hideComputers: !this.state.hideComputers });
         break;
+      case 4:
+        this.setState({ dragCards: !this.state.dragCards });
+        break;
       default:
         break;
     }
@@ -196,7 +191,7 @@ class Game extends React.Component {
   renderBackground() {
     return (
       <div className="area" >
-        <ul className={"circles c-" + this.currentColor + " " + (this.reversed ? "c-up" : "c-down")}>
+        <ul className={"circles c-" + this.state.currentColor + " " + (this.reversed ? "c-up" : "c-down")}>
           <li></li>
           <li></li>
           <li></li>
@@ -214,11 +209,10 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="main">
         {this.renderBackground()}
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
 
         <div id="curtain"></div>
 
@@ -244,9 +238,7 @@ class Game extends React.Component {
           snakeIteration={this.state.snakeIteration}
 
           removePlayer={this.removePlayer}
-          handleCardClick={this.handleCardClick}
-          handleCardDown={this.handleCardDown}
-          handleCardUp={this.handleCardUp} />
+          handleCardClick={this.handleCardClick} />
 
         <Dialogs
           colorOpen={this.state.colorOpen}
@@ -261,6 +253,8 @@ class Game extends React.Component {
           closeWinDialog={this.closeWinDialog}
           closeColorDialog={this.closeColorDialog}
           toggleHelpDialog={this.toggleHelpDialog} />
+
+
       </div>
     );
   }

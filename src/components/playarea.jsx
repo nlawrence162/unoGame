@@ -34,7 +34,7 @@ class PlayArea extends React.Component {
     hand.push(
       <div key={i}>
         <div>
-          <button className="delete" onClick={() => this.props.removePlayer(i)}><span></span><i className="glyphicon glyphicon-remove" /></button>
+          <button className="delete" onClick={() => this.props.removePlayer(i)} ><span></span> <i className="glyphicon glyphicon-remove" /></button>
           <h3 style={{ display: "inline-block" }} > {this.props.repo.players[i].name + "'s hand:"}</h3>
         </div>
         <Hand player={this.props.repo.players[i]}
@@ -43,7 +43,7 @@ class PlayArea extends React.Component {
           handleCardUp={this.props.handleCardUp}
           canPlay={this.props.repo.players[i].playPossible(this.props.repo.playPile[this.props.repo.playPile.length - 1])} />
       </div>);
-    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px blue", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "3px" } : { padding: "5px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px blue", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "3px" } : { padding: "6px 3px" } }, hand);
   }
 
   renderStaticHand(i) {
