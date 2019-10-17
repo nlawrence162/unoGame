@@ -13,25 +13,25 @@ class Game extends React.Component {
     var repo = new Repo();
 
     this.state = {
-      repo: repo,
+      repo: repo, //Server side
 
-      //manager data
+      //manager data || Server Side
       currentPlayer: 0,
       reversed: false,
       skip: false,
       forceDraw: 0,
       currentColor: repo.playPile[repo.playPile.length - 1].color,
 
-      //options data
+      //options data || Client Side
       optionsOpen: false,
       autoPlayAI: false,
       stopOnPlayer: false,
       hideComputers: false,
 
-      //snakedata
+      //snakedata || Client Side
       snakeIteration: 0,
 
-      //dialog data
+      //dialog data || Client Side
       colorOpen: false,
       winnerOpen: false,
       winningMessage: "",
@@ -39,9 +39,6 @@ class Game extends React.Component {
       rules2Open: false,
       rules3Open: false,
       helpOpen: false,
-
-      //delete
-      deleteIterable: 0
     };
 
     //On right arrow key press
@@ -100,7 +97,7 @@ class Game extends React.Component {
       if (currentPlayer > repo.players.length - 1) currentPlayer = 0; //Top boundry
     }
 
-    this.setState({ repo: repo, currentPlayer: currentPlayer });
+    this.setState({ repo: repo, currentPlayer: currentPlayer, skip: false });
   }
   handleCardClick = card => {
     this.turnPlayer(card);
