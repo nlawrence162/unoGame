@@ -192,7 +192,7 @@ class Game extends React.Component {
   renderBackground() {
     return (
       <div className="area" >
-        <ul className={"circles c-" + this.state.currentColor + " " + (this.reversed ? "c-up" : "c-down")}>
+        <ul className={"circles c-" + this.state.currentColor + " " + (this.state.reversed ? "c-up" : "c-down")}>
           <li></li>
           <li></li>
           <li></li>
