@@ -28,11 +28,11 @@
   transform: translateY(-2px);
   margin: 0px 5px;
   border: none;
-  background-color: #FFF;
+  background: none;
   transition: all 0.5s;
-  border-right: 1px solid #FFF;
-  border-top:1px solid #FFF;
-  border-bottom:1px solid #FFF;
+  border-right: 1px solid transparent;
+  border-top:1px solid transparent;
+  border-bottom:1px solid transparent;
 }
 
 .delete:hover{
