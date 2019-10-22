@@ -57,10 +57,6 @@ class Logic {
           if (state.currentPlayer < 0) state.currentPlayer = state.repo.players.length - 1; //Bottom boundry
           if (state.currentPlayer > state.repo.players.length - 1) state.currentPlayer = 0; //Top boundry
         }
-
-        //Reset skip value when there are no players
-        if (state.repo.players.length === 0)
-          state.skip = false;
       } else {
         //Next player
         if (state.skip) {
@@ -158,9 +154,6 @@ class Logic {
         if (state.currentPlayer > state.repo.players.length - 1) state.currentPlayer = 0; //Top boundry
       }
 
-      //Reset skip value when there are no players
-      if (state.repo.players.length === 0)
-        state.skip = false;
     } else {
       //All actions are done. Move to next player.
       if (state.skip) {

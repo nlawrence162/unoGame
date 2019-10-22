@@ -44,7 +44,7 @@ class PlayArea extends React.Component {
           handleCardUp={this.props.handleCardUp}
           canPlay={this.props.repo.players[i].playPossible(this.props.repo.playPile[this.props.repo.playPile.length - 1])} />
       </div>);
-    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px blue", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "3px" } : { padding: "6px 3px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px blue", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "0px 3px" } : { padding: "3px 3px" } }, hand);
   }
 
   renderStaticHand(i) {
@@ -52,6 +52,7 @@ class PlayArea extends React.Component {
     if (this.props.repo.players[i].computer && this.props.hideComputers) {
       hand.push(<div key={i + this.props.repo.players.length}>
         <button className="delete" onClick={() => this.props.removePlayer(i)} ><span></span> <i className="glyphicon glyphicon-remove" /></button>
+        <i className="glyphicon glyphicon-hdd" style={{ paddingRight: "10px", paddingLeft: "5px", transform: "translateY(-2px)" }} />
         <h3 style={{ display: "inline-block" }}>{this.props.repo.players[i].name + " (" + this.props.repo.players[i].hand.length + (this.props.repo.players[i].hand.length === 1 ? " Card Hidden)" : " Cards Hidden)")}</h3>
       </div>);
     }
@@ -60,13 +61,13 @@ class PlayArea extends React.Component {
         <div key={i}>
           <div>
             <button className="delete" onClick={() => this.props.removePlayer(i)} ><span></span> <i className="glyphicon glyphicon-remove" /></button>
-            <i className={this.props.repo.players[i].computer ? "" : "glyphicon glyphicon-user"} style={{ paddingRight: "10px", paddingLeft: "5px", transform: "translateY(-2px)" }} />
+            <i className={this.props.repo.players[i].computer ? "glyphicon glyphicon-hdd" : "glyphicon glyphicon-user"} style={{ paddingRight: "10px", paddingLeft: "5px", transform: "translateY(-2px)" }} />
             <h3 style={{ display: "inline-block" }}>{this.props.repo.players[i].name + "'s hand:"}</h3>
           </div>
           <Hand player={this.props.repo.players[i]} />
         </div>);
     }
-    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px coral", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "3px" } : { padding: "6px 3px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px coral", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "0px 3px" } : { padding: "3px 3px" } }, hand);
   }
 
   render() {
