@@ -44,7 +44,7 @@ class PlayArea extends React.Component {
           handleCardUp={this.props.handleCardUp}
           canPlay={this.props.repo.players[i].playPossible(this.props.repo.playPile[this.props.repo.playPile.length - 1])} />
       </div>);
-    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px blue", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "0px 3px" } : { padding: "3px 3px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { borderWidth: "3px", borderColor: "blue", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "0px 3px" } : { padding: "3px 3px" } }, hand);
   }
 
   renderStaticHand(i) {
@@ -67,7 +67,7 @@ class PlayArea extends React.Component {
           <Hand player={this.props.repo.players[i]} />
         </div>);
     }
-    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { border: "3px coral", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "0px 3px" } : { padding: "3px 3px" } }, hand);
+    return React.createElement("div", { key: i, id: i, style: (i === this.props.currentPlayer) ? { borderWidth: "3px", borderColor: "coral", borderTopStyle: "double", borderBottomStyle: "double", borderRadius: "10px", padding: "0px 3px" } : { padding: "3px 3px" } }, hand);
   }
 
   render() {

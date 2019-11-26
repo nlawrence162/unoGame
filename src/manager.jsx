@@ -13,9 +13,9 @@ class Game extends React.Component {
     var repo = new Repo();
 
     this.state = {
-      repo: repo, //Server side
+      repo: repo, //Server side || game_game
 
-      //manager data || Server Side
+      //manager data || Server Side || game_data
       currentPlayer: 0,
       reversed: false,
       skip: false,
