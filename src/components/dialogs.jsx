@@ -33,7 +33,7 @@ class Dialogs extends React.Component {
           <DialogTitle id="rules2"><span style={{ fontSize: "130%" }}>Okay, here it is:</span></DialogTitle>
           <DialogContent>
             <DialogContentText id="rulz2" style={{ fontSize: "110%" }}>
-              <span style={{ fontStyle: "italic" }}>Wikipedia dosn't know what they're talking about:</span><br /><br />
+              <span style={{ fontStyle: "italic" }}>Wikipedia doesn't know what they're talking about:</span><br /><br />
               - Drawing cards will not end your turn. You can still play after you are forced to draw cards.<br /><br />
               - Winning doesn't end the game. You simply reuse the remaining cards by adding players or computers at any time.<br /><br />
               - Shouting "UNO" won't do you any good in this game.
@@ -134,10 +134,10 @@ class Dialogs extends React.Component {
             <span style={{ fontStyle: "italic", fontWeight: "bold" }}>Autoplay</span>: When the "advance one turn" button is clicked, it will
                 automatically play every <span style={{ color: "coral" }}>AI turn</span> and stop at the next <span style={{ color: "MediumTurquoise " }}>player</span>.
                 Reverse, Skip, and Draw cards are still calculated during these turns.<br /><br />
-            <span style={{ fontStyle: "italic", fontWeight: "bold" }}>Hide AI</span>: By default, the oposition's cards are readily available to see.
-                Unless you're a dirty cheater, you may feel inclined to hide their cards.This button dose that.<br /><br />
+            <span style={{ fontStyle: "italic", fontWeight: "bold" }}>Hide AI</span>: By default, the oposition's cards are readily available.
+                Unless you're a dirty cheater, you may feel inclined to hide their cards. This option does that.<br /><br />
             <span style={{ fontStyle: "italic", fontWeight: "bold" }}>No Skip</span>: This button allows you to spam the "<span style={{ fontStyle: "italic" }}>advance one turn</span>"
-                button without skipping a player turn by accident. A turn will not be advanced on players when this button is on.<br /><br />
+                button without skipping a player turn by accident. A turn will not be advanced on players when this option is on.<br /><br />
             <span style={{ fontWeight: "bold" }}>Oh, and also you can advance one turn by pressing the right arrow key.</span>
           </DialogContentText>
         </DialogContent>
