@@ -8,6 +8,7 @@
     transform: translateX(40px);
     transition: 0.5s;
     padding: 5px 15px;
+    z-index: 1;
   }
   .rules:hover{
     transform: translateX(30px);

@@ -12,6 +12,15 @@ class Game extends React.Component {
     super(props);
     var repo = new Repo();
 
+    //REPLAY IMPLEMENTATION
+    //-- Every form of mass card movement(delete or add players) must be a series of moves in one turn. --//
+    //A play button will pause and resume a request animation frame loop. One turn can be advanced using the advance button.
+    //Plays and turns are seperated in database, but the front end is controlled by a turn by turn system.
+    //Options and buttons should be replaced with replay controlls.
+    //When a game replay is requested, it should be loaded in full (one sql select and then stored locally)
+    //There should be a slider bar that moves the game forward and backward live (if replay is quick enough)
+    //In order to make replay quick enough, make sure there is no large abuse of objects/variables and use simple logic
+
     this.state = {
       repo: repo, //Server side || game_game
 

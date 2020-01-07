@@ -63,9 +63,8 @@ class Dialogs extends React.Component {
               - By default, there is one player. You choose which cards they play.
                   You add or remove oponents and other players at will.<br /><br />
               - Every player is shown on the screen, this can be disabled.
-                  A computer player is represented by a <span style={{ color: "coral" }}>red</span> border.
-                  A player is represented by a <span style={{ color: "MediumTurquoise " }}>blue</span> border.
-                  These borders will appear when it is their turn to play.<br /><br />
+                  A computer player is represented by a <span style={{ color: "coral" }}>red</span> border and a <i className="glyphicon glyphicon-hdd" /> icon.
+                  A player is represented by a <span style={{ color: "MediumTurquoise " }}>blue</span> border and a <i className="glyphicon glyphicon-user" /> icon.<br /><br />
               - You can choose how the turns work, but the rules stay the same.
                   The game won't let you make an illegal play.<br /><br />
               <span style={{ fontWeight: "bold" }}>Note: For extra options, open the <i className="glyphicon glyphicon-cog" /> menu.</span>
@@ -138,7 +137,7 @@ class Dialogs extends React.Component {
                 Unless you're a dirty cheater, you may feel inclined to hide their cards. This option does that.<br /><br />
             <span style={{ fontStyle: "italic", fontWeight: "bold" }}>No Skip</span>: This button allows you to spam the "<span style={{ fontStyle: "italic" }}>advance one turn</span>"
                 button without skipping a player turn by accident. A turn will not be advanced on players when this option is on.<br /><br />
-            <span style={{ fontWeight: "bold" }}>Oh, and also you can advance one turn by pressing the right arrow key.</span>
+            <span style={{ fontWeight: "bold" }}>Oh, and you can also advance one turn by pressing the right arrow key.</span>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
