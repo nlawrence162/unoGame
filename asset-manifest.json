@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/unoGameSimulator/static/css/main.b8dd6ba8.chunk.css",
-    "main.js": "/unoGameSimulator/static/js/main.840e22ce.chunk.js",
-    "main.js.map": "/unoGameSimulator/static/js/main.840e22ce.chunk.js.map",
+    "main.js": "/unoGameSimulator/static/js/main.6e01f080.chunk.js",
+    "main.js.map": "/unoGameSimulator/static/js/main.6e01f080.chunk.js.map",
     "runtime~main.js": "/unoGameSimulator/static/js/runtime~main.faf2ca31.js",
     "runtime~main.js.map": "/unoGameSimulator/static/js/runtime~main.faf2ca31.js.map",
-    "static/js/2.9a779db9.chunk.js": "/unoGameSimulator/static/js/2.9a779db9.chunk.js",
-    "static/js/2.9a779db9.chunk.js.map": "/unoGameSimulator/static/js/2.9a779db9.chunk.js.map",
+    "static/js/2.57e52360.chunk.js": "/unoGameSimulator/static/js/2.57e52360.chunk.js",
+    "static/js/2.57e52360.chunk.js.map": "/unoGameSimulator/static/js/2.57e52360.chunk.js.map",
     "index.html": "/unoGameSimulator/index.html",
-    "precache-manifest.c62425ec30432922134ec62c3fe24052.js": "/unoGameSimulator/precache-manifest.c62425ec30432922134ec62c3fe24052.js",
+    "precache-manifest.cbfb3329c8b08a6fecc9624d24ecfd94.js": "/unoGameSimulator/precache-manifest.cbfb3329c8b08a6fecc9624d24ecfd94.js",
     "service-worker.js": "/unoGameSimulator/service-worker.js",
     "static/css/main.b8dd6ba8.chunk.css.map": "/unoGameSimulator/static/css/main.b8dd6ba8.chunk.css.map",
     "static/media/card_back_alt_large.png": "/unoGameSimulator/static/media/card_back_alt_large.389e3737.png"

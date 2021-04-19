@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "91ef4fd3fa27af5c38bb19159fbcc037",
+    "revision": "bbca8ed8695bf3ea67e232c4ba7cc49f",
     "url": "/unoGameSimulator/index.html"
   },
   {
-    "revision": "403a55ead2465b9adc62",
+    "revision": "24f586296fa30dec542a",
     "url": "/unoGameSimulator/static/css/main.b8dd6ba8.chunk.css"
   },
   {
-    "revision": "85446490f89d45ed0145",
-    "url": "/unoGameSimulator/static/js/2.9a779db9.chunk.js"
+    "revision": "eb76a1b0e25aa75640c6",
+    "url": "/unoGameSimulator/static/js/2.57e52360.chunk.js"
   },
   {
-    "revision": "403a55ead2465b9adc62",
-    "url": "/unoGameSimulator/static/js/main.840e22ce.chunk.js"
+    "revision": "24f586296fa30dec542a",
+    "url": "/unoGameSimulator/static/js/main.6e01f080.chunk.js"
   },
   {
     "revision": "4219978a1da78e3de8ce",

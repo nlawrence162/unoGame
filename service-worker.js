@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/unoGameSimulator/precache-manifest.c62425ec30432922134ec62c3fe24052.js"
+  "/unoGameSimulator/precache-manifest.cbfb3329c8b08a6fecc9624d24ecfd94.js"
 );
 
 self.addEventListener('message', (event) => {
