@@ -2,7 +2,7 @@
 
 **This game does**  ***not***  **follow official uno rules.**
 
-You can play it [here](https://github.chrobinson.com/pages/lawrnat/internuno/). (Recommended platform: PC, Chrome Browser)  
+You can play it [here](https://nlawrence162.github.io/unoGameSimulator/). (Recommended platform: PC, Chrome Browser)  
 This program was created by an IT intern(me) in order to show off what I currently know about the [React](https://reactjs.org/) framework.
 
 ## Credits
